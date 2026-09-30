@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SyncLoop AI builds custom AI automation systems that eliminate repetitive tasks, streamline workflows, and scale your business on autopilot.">
+    <title>SyncLoop AI | Automate the Grind. Amplify Your Growth.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Darkened the base background and card backgrounds to reduce brightness */
+            --bg-color: #E8EAF2; 
+            --card-bg: #F1F3F9;  
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a55;
+            --accent-blue: #4F46E5;
+            --accent-purple: #9333EA;
+            --accent-pink: #EC4899;
+            --glass-bg: rgba(241, 243, 249, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.7);
+            
+            /* Softened the white highlight in shadows to remove the harsh glare */
+            --clay-shadow-sm: 8px 8px 16px rgba(20, 20, 35, 0.08), -8px -8px 16px rgba(255, 255, 255, 0.5);
+            --clay-shadow-lg: 25px 25px 50px rgba(20, 20, 35, 0.1), -25px -25px 50px rgba(255, 255, 255, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(79, 70, 229, 0.08) 0px, transparent 50%),
+                radial-gradient(at 90% 10%, rgba(236, 72, 153, 0.08) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(147, 51, 234, 0.08) 0px, transparent 50%),
+                radial-gradient(at 10% 90%, rgba(79, 70, 229, 0.06) 0px, transparent 50%);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Accessibility: Focus States */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+
+        /* Background Shapes */
+        .bg-shape { position: fixed; z-index: -1; border-radius: 30%; filter: blur(80px); opacity: 0.3; pointer-events: none; }
+        .shape-1 { width: 300px; height: 300px; background: #C7D2FE; top: 20%; left: -100px; animation: floatBg 15s ease-in-out infinite; }
+        .shape-2 { width: 400px; height: 400px; background: #FBCFE8; bottom: 10%; right: -150px; animation: floatBg 18s ease-in-out infinite reverse; }
+        @keyframes floatBg { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px, 30px) scale(1.1); } }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 20px; width: calc(100% - 40px); max-width: 1180px;
+            left: 50%; transform: translateX(-50%); padding: 16px 32px;
+            background: rgba(241, 243, 249, 0.75); backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 100px; z-index: 1000;
+            box-shadow: 0 15px 35px rgba(20, 20, 35, 0.05); display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; text-decoration: none; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; box-shadow: 4px 6px 12px rgba(79, 70, 229, 0.3), inset 1px 1px 2px rgba(255,255,255,0.4); }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; margin-left: 32px; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-blue); }
+        .btn-nav { background: var(--text-primary); color: white; padding: 12px 24px; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 4px 6px 12px rgba(20, 20, 35, 0.15); }
+        .btn-nav:hover { transform: translateY(-2px); box-shadow: 6px 10px 20px rgba(20, 20, 35, 0.2); }
+
+        /* Hero Section */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; padding-top: 120px; perspective: 1200px; }
+        .hero-content { max-width: 550px; z-index: 2; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--card-bg); padding: 10px 20px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; color: var(--accent-purple); margin-bottom: 24px; box-shadow: var(--clay-shadow-sm); }
+        .hero h1 { font-size: 4.5rem; line-height: 1.05; margin-bottom: 24px; font-weight: 800; letter-spacing: -0.03em; }
+        .gradient-text { background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 40px; }
+        .cta-group { display: flex; gap: 16px; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); color: white; padding: 18px 32px; border-radius: 16px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 8px 10px 25px rgba(79, 70, 229, 0.3), inset 1px 1px 1px rgba(255,255,255,0.2); border: none; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 12px 15px 35px rgba(79, 70, 229, 0.4); }
+        .btn-secondary { background: var(--card-bg); color: var(--text-primary); padding: 18px 32px; border-radius: 16px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--clay-shadow-sm); border: 1px solid rgba(0,0,0,0.02); }
+        .btn-secondary:hover { transform: translateY(-3px); box-shadow: var(--clay-shadow-lg); }
+
+        /* 3D Hero Visual */
+        .hero-visual { position: relative; width: 500px; height: 500px; transform-style: preserve-3d; transition: transform 0.1s ease-out; }
+        .visual-card-main { position: absolute; width: 340px; height: 420px; top: 40px; left: 80px; background: rgba(241, 243, 249, 0.6); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 30px; box-shadow: var(--clay-shadow-lg); transform: translateZ(50px); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; }
+        .card-title { font-weight: 700; font-size: 1.1rem; }
+        .card-status { background: #DCFCE7; color: #16A34A; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; box-shadow: inset 2px 2px 4px rgba(0,0,0,0.05); }
+        .automation-step { background: white; padding: 14px; border-radius: 16px; display: flex; align-items: center; gap: 12px; box-shadow: 4px 4px 10px rgba(20, 20, 35, 0.04); transform: translateZ(20px); margin-bottom: 12px; }
+        .step-icon { width: 40px; height: 40px; background: #EEF2FF; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent-blue); font-weight: 700; box-shadow: inset 2px 2px 4px rgba(0,0,0,0.05); }
+        .step-text h4 { font-size: 0.95rem; } 
+        .step-text p { font-size: 0.8rem; color: var(--text-secondary); margin: 0; }
+
+        .orb { position: absolute; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; box-shadow: 10px 10px 30px rgba(20, 20, 35, 0.1), inset 2px 2px 5px rgba(255,255,255,0.8); animation: float 6s ease-in-out infinite; }
+        .orb-1 { width: 160px; height: 160px; background: linear-gradient(135deg, #FF80B5, #EF4444); top: -20px; right: 40px; transform: translateZ(100px); }
+        .orb-2 { width: 120px; height: 120px; background: linear-gradient(135deg, #4F46E5, #06B6D4); bottom: 30px; left: -20px; transform: translateZ(80px); animation-delay: 2s; }
+        .orb-3 { width: 90px; height: 90px; background: linear-gradient(135deg, #FBBF24, #F97316); bottom: -10px; right: 80px; transform: translateZ(120px); animation-delay: 4s; }
+        @keyframes float { 0%, 100% { transform: translateZ(100px) translateY(0); } 50% { transform: translateZ(100px) translateY(-25px); } }
+
+        /* Sections */
+        section { padding: 80px 0; position: relative; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-tag { color: var(--accent-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; margin-bottom: 12px; display: block; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 16px; font-weight: 800; letter-spacing: -0.02em; }
+        .section-header p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .service-card { background: var(--card-bg); padding: 40px; border-radius: 30px; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: var(--clay-shadow-sm); border: 1px solid var(--glass-border); }
+        .service-card:hover { transform: translateY(-8px); box-shadow: var(--clay-shadow-lg); }
+        .icon-3d { width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 6px 6px 15px rgba(20, 20, 35, 0.1), inset 2px 2px 5px rgba(255,255,255,0.9); }
+        .bg-blue { background: linear-gradient(135deg, #E0E7FF, #A5B4FC); color: var(--accent-blue); }
+        .bg-purple { background: linear-gradient(135deg, #F3E8FF, #C4B5FD); color: var(--accent-purple); }
+        .bg-pink { background: linear-gradient(135deg, #FCE7F3, #F9A8D4); color: var(--accent-pink); }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 12px; font-weight: 700; }
+        .service-card p { color: var(--text-secondary); }
+
+        /* Bento Features Grid */
+        .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(200px, auto); gap: 24px; }
+        .bento-item { background: var(--card-bg); padding: 32px; border-radius: 24px; box-shadow: var(--clay-shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s; overflow: hidden; position: relative; }
+        .bento-item:hover { transform: translateY(-5px); box-shadow: var(--clay-shadow-lg); }
+        
+        .bento-large { grid-column: span 2; grid-row: span 2; background: linear-gradient(160deg, #4F46E5, #9333EA); color: white; position: relative; }
+        .bento-large p { color: rgba(255,255,255,0.8); position: relative; z-index: 2; }
+        .bento-large h3 { position: relative; z-index: 2; }
+        
+        .hub-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+        .hub-center { width: 70px; height: 70px; background: white; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--accent-purple); box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 3; transform: translateZ(40px); }
+        
+        .hub-node { position: absolute; padding: 10px 16px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-radius: 12px; font-size: 0.8rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 6px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); z-index: 2; }
+        .node-1 { top: 20%; left: 10%; transform: translateZ(60px); }
+        .node-2 { top: 20%; right: 10%; transform: translateZ(80px); }
+        .node-3 { bottom: 15%; left: 15%; transform: translateZ(50px); }
+        .node-4 { bottom: 15%; right: 15%; transform: translateZ(70px); }
+        
+        .hub-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .hub-line { stroke: rgba(255,255,255,0.4); stroke-width: 2; stroke-dasharray: 6; animation: dash 1s linear infinite; }
+        @keyframes dash { to { stroke-dashoffset: -12; } }
+
+        .bento-wide { grid-column: span 2; }
+        .bento-item h3 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 700; position: relative; z-index: 2; }
+        .bento-item p { color: var(--text-secondary); font-size: 0.95rem; position: relative; z-index: 2; }
+
+        .chart-3d-container { flex: 1; display: flex; align-items: flex-end; justify-content: center; padding-top: 20px; perspective: 1000px; margin-top: 20px; }
+        .chart-3d { transform: rotateX(50deg) rotateZ(45deg); transform-style: preserve-3d; display: flex; gap: 12px; }
+        .bar-3d { width: 24px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); border-radius: 4px; box-shadow: 2px 2px 10px rgba(20, 20, 35, 0.1); position: relative; transform-origin: bottom; animation: growBar 1.5s ease-out forwards; transform: scaleY(0); }
+        .bar-3d::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 10px; background: #C4B5FD; transform: rotateX(90deg); transform-origin: top; border-radius: 4px; }
+        @keyframes growBar { to { transform: scaleY(1); } }
+
+        /* Use cases (formerly testimonials) */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
+        .testimonial-card { background: rgba(241, 243, 249, 0.6); backdrop-filter: blur(10px); border: 1px var(--glass-border); padding: 32px; border-radius: 24px; box-shadow: var(--clay-shadow-sm); position: relative; transition: transform 0.3s; }
+        .testimonial-card:hover { transform: translateY(-5px); box-shadow: var(--clay-shadow-lg); }
+        .quote-icon { font-size: 5rem; color: rgba(79, 70, 229, 0.1); position: absolute; top: 10px; right: 20px; font-family: serif; line-height: 1; }
+        .testimonial-text { font-size: 1.05rem; margin-bottom: 24px; font-weight: 500; }
+        .client-info { display: flex; align-items: center; gap: 12px; }
+        .avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #E0E7FF, #FCE7F3); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent-blue); box-shadow: var(--clay-shadow-sm); }
+        .client-info h4 { font-size: 1rem; }
+        .client-info p { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* 3D Process Section */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; perspective: 1000px; }
+        .process-card { background: rgba(241, 243, 249, 0.5); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); padding: 32px; border-radius: 24px; position: relative; box-shadow: var(--clay-shadow-sm); transform: rotateY(-5deg) rotateX(2deg); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .process-card:hover { transform: rotateY(0) rotateX(0) translateY(-10px); box-shadow: var(--clay-shadow-lg); }
+        .step-number { position: absolute; top: -20px; right: 20px; font-size: 5rem; font-weight: 800; color: rgba(79, 70, 229, 0.1); line-height: 1; }
+        .process-card h3 { margin-bottom: 12px; color: var(--accent-blue); }
+
+        /* Final CTA */
+        .cta-container { background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(147, 51, 234, 0.08)); border: 1px solid var(--glass-border); padding: 80px 40px; border-radius: 40px; text-align: center; box-shadow: var(--clay-shadow-lg); position: relative; overflow: hidden; }
+        .cta-container h2 { font-size: 3rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -0.02em; }
+        .cta-container p { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 40px; }
+
+        footer { padding: 40px 0; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* Reveal animations */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .process-card.reveal { transform: translateY(40px) rotateY(-5deg) rotateX(2deg); }
+        .process-card.reveal.active { transform: translateY(0) rotateY(-5deg) rotateX(2deg); }
+        .process-card.reveal.active:hover { transform: rotateY(0) rotateX(0) translateY(-10px); }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 140px; }
+            .hero-content { max-width: 100%; margin-bottom: 60px; }
+            .cta-group { justify-content: center; }
+            .hero-visual { transform: scale(0.8) !important; margin-bottom: 40px; pointer-events: none; }
+            .hero h1 { font-size: 3rem; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .bento-large, .bento-wide { grid-column: span 2; }
+        }
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .section-header h2 { font-size: 2rem; }
+            .cta-container h2 { font-size: 2rem; }
+            .cta-group { flex-direction: column; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-large, .bento-wide { grid-column: span 1; }
+            .hero-visual { display: none; }
+            .chart-3d-container { transform: scale(0.7); margin: -20px 0; }
+        }
+
+        /* Accessibility: Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-shape shape-1" aria-hidden="true"></div>
+    <div class="bg-shape shape-2" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-icon" aria-hidden="true">⏣</div>
+            SyncLoop<span style="color: var(--accent-blue);">AI</span>
+        </a>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#features">Features</a>
+            <a href="#testimonials">Use Cases</a>
+            <a href="#process">Process</a>
+        </div>
+        <a href="#contact" class="btn-nav">Book a Call</a>
+    </nav>
+
+    <main>
+        <header class="hero container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span style="width: 8px; height: 8px; background: var(--accent-purple); display: inline-block; border-radius: 50px;"></span>
+                    Next-Gen AI Automations
+                </div>
+                <h1>Automate the Grind. <br><span class="gradient-text">Amplify Your Growth.</span></h1>
+                <p>SyncLoop AI builds custom AI automation systems that eliminate repetitive tasks, streamline your workflows, and scale your business on autopilot.</p>
+                <div class="cta-group">
+                    <a href="#contact" class="btn-primary">Book a Free Strategy Call</a>
+                    <a href="#services" class="btn-secondary">See How It Works</a>
+                </div>
+            </div>
+
+            <div class="hero-visual" id="heroVisual" aria-hidden="true">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+                <div class="visual-card-main">
+                    <div class="card-header">
+                        <span class="card-title">Workflow Engine</span>
+                        <span class="card-status">● Active</span>
+                    </div>
+                    <div>
+                        <div class="automation-step">
+                            <div class="step-icon">1</div>
+                            <div class="step-text"><h4>New Lead Captured</h4><p>Webhook triggered</p></div>
+                        </div>
+                        <div class="automation-step">
+                            <div class="step-icon" style="background: #FAE8FF; color: #C026D3;">2</div>
+                            <div class="step-text"><h4>AI Qualifies Lead</h4><p>GPT-4 Analysis...</p></div>
+                        </div>
+                        <div class="automation-step">
+                            <div class="step-icon" style="background: #DCFCE7; color: #16A34A;">3</div>
+                            <div class="step-text"><h4>CRM Updated & Email Sent</h4><p>Sync complete</p></div>
+                        </div>
+                    </div>
+                    <div style="height: 8px; background: #E2E8F0; border-radius: 10px; overflow: hidden;">
+                        <div style="width: 80%; height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple)); border-radius: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Core Services</span>
+                    <h2>Enter the Loop. <span class="gradient-text">Enter SyncLoop AI.</span></h2>
+                    <p>We don’t just give you a ChatGPT prompt. We build end-to-end AI automation systems integrated directly into your tools.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card reveal">
+                        <div class="icon-3d bg-blue">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <h3>Custom AI Chatbots</h3>
+                        <p>24/7 AI agents trained on your company data to handle customer support, answer FAQs, and qualify leads instantly.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="icon-3d bg-purple">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        </div>
+                        <h3>Workflow Automation</h3>
+                        <p>We connect your CRM, email, and internal tools. When an action happens in one place, AI automatically handles the rest.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="icon-3d bg-pink">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h3>AI Data Processing</h3>
+                        <p>Automate document reading, data extraction, and report generation. Turn hours of manual work into seconds.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Features Section -->
+        <section id="features">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Platform Features</span>
+                    <h2>Built for Scale, <span class="gradient-text">Designed for Humans.</span></h2>
+                    <p>Everything you need to run your business on autopilot, wrapped in a beautiful, intuitive interface.</p>
+                </div>
+                <div class="bento-grid reveal">
+                    
+                    <!-- 3D Integration Hub -->
+                    <div class="bento-item bento-large">
+                        <div style="z-index: 2;">
+                            <h3>Seamless Integrations</h3>
+                            <p>Connect your existing stack. SyncLoop AI talks to your CRM, Slack, Notion, Email, and custom APIs without writing a single line of code.</p>
+                        </div>
+                        
+                        <div class="hub-container">
+                            <svg class="hub-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <line class="hub-line" x1="50%" y1="50%" x2="15%" y2="25%" />
+                                <line class="hub-line" x1="50%" y1="50%" x2="85%" y2="25%" />
+                                <line class="hub-line" x1="50%" y1="50%" x2="20%" y2="80%" />
+                                <line class="hub-line" x1="50%" y1="50%" x2="80%" y2="80%" />
+                            </svg>
+                            
+                            <div class="hub-center">⏣</div>
+                            
+                            <div class="hub-node node-1">💬 Slack</div>
+                            <div class="hub-node node-2">📈 HubSpot</div>
+                            <div class="hub-node node-3">📝 Notion</div>
+                            <div class="hub-node node-4">✉️ Gmail</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bento-item">
+                        <h3>Human-in-the-Loop</h3>
+                        <p>AI handles the repetitive work. For critical tasks, it pauses for your team's final approval.</p>
+                    </div>
+
+                    <div class="bento-item">
+                        <h3>Built on Trusted Infrastructure</h3>
+                        <p>Automations are built on encrypted, reputable platforms, with your data never used to train public models.</p>
+                    </div>
+
+                    <!-- 3D Isometric Chart -->
+                    <div class="bento-item bento-wide">
+                        <div>
+                            <h3>Clear Reporting</h3>
+                            <p>See what each automation is doing, how often it runs, and where it's saving you time.</p>
+                        </div>
+                        <div class="chart-3d-container">
+                            <div class="chart-3d">
+                                <div class="bar-3d" style="height: 40px;"></div>
+                                <div class="bar-3d" style="height: 70px;"></div>
+                                <div class="bar-3d" style="height: 50px;"></div>
+                                <div class="bar-3d" style="height: 90px;"></div>
+                                <div class="bar-3d" style="height: 60px;"></div>
+                                <div class="bar-3d" style="height: 80px;"></div>
+                                <div class="bar-3d" style="height: 100px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases Section (previously fictional testimonials) -->
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">What We Build</span>
+                    <h2>What This Could Look Like <span class="gradient-text">For Your Business.</span></h2>
+                    <p>We're just getting started — here are example projects that show the kind of automation we build. Real client stories will replace these as we deliver them.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card reveal">
+                        <div class="quote-icon" aria-hidden="true">”</div>
+                        <p class="testimonial-text">A support inbox where an AI agent handles common questions instantly, and only hands off the tricky ones to a human — cutting response time from hours to seconds.</p>
+                        <div class="client-info">
+                            <div class="avatar">💬</div>
+                            <div>
+                                <h4>Example: AI Support Agent</h4>
+                                <p>For teams buried in repetitive tickets</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <div class="quote-icon" aria-hidden="true">”</div>
+                        <p class="testimonial-text">A document pipeline that reads incoming PDFs or invoices, extracts the key data, and drops it straight into a spreadsheet or CRM — no manual typing.</p>
+                        <div class="client-info">
+                            <div class="avatar" style="color: var(--accent-purple); background: linear-gradient(135deg, #F3E8FF, #E0E7FF);">📄</div>
+                            <div>
+                                <h4>Example: Document Automation</h4>
+                                <p>For teams drowning in paperwork</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <div class="quote-icon" aria-hidden="true">”</div>
+                        <p class="testimonial-text">A lead-qualification flow that scores new leads the moment they come in and only alerts your sales team when one is worth a call.</p>
+                        <div class="client-info">
+                            <div class="avatar" style="color: var(--accent-pink); background: linear-gradient(135deg, #FCE7F3, #FAE8FF);">🎯</div>
+                            <div>
+                                <h4>Example: Lead Qualification</h4>
+                                <p>For teams chasing cold leads</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">How It Works</span>
+                    <h2>The SyncLoop Process</h2>
+                    <p>Getting started is simple. We handle the heavy lifting while you watch your business run itself.</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-card reveal">
+                        <div class="step-number" aria-hidden="true">1</div>
+                        <h3>Discover</h3>
+                        <p>We audit your current workflows to find the biggest bottlenecks costing you time and money.</p>
+                    </div>
+                    <div class="process-card reveal">
+                        <div class="step-number" aria-hidden="true">2</div>
+                        <h3>Build</h3>
+                        <p>We custom-design and train AI agents and automations tailored specifically for your business logic.</p>
+                    </div>
+                    <div class="process-card reveal">
+                        <div class="step-number" aria-hidden="true">3</div>
+                        <h3>Sync</h3>
+                        <p>We seamlessly integrate the systems into your daily operations and monitor them for continuous optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="cta-container reveal">
+                    <h2>Ready to Put Your Business on <span class="gradient-text">Autopilot?</span></h2>
+                    <p>Stop wasting time on tasks AI can do for you. Let’s build your custom automation system today.</p>
+                    <a href="mailto:kenil@syncloopai.com" class="btn-primary">Book Your Free AI Audit</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 SyncLoop AI. All rights reserved. | syncloopai.com</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // 1. Performant Scroll Reveal using IntersectionObserver
+            const reveals = document.querySelectorAll('.reveal');
+            
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                reveals.forEach(el => observer.observe(el));
+            } else {
+                reveals.forEach(el => el.classList.add('active'));
+            }
+
+            // 2. Optimized 3D Mouse Tilt with requestAnimationFrame & IntersectionObserver
+            const heroVisual = document.getElementById('heroVisual');
+            
+            if (window.innerWidth > 968 && heroVisual) {
+                let ticking = false;
+                let mouseX = 0, mouseY = 0;
+                let isHeroVisible = false;
+
+                const heroObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        isHeroVisible = entry.isIntersecting;
+                    });
+                }, { threshold: 0 });
+                
+                heroObserver.observe(document.querySelector('.hero'));
+
+                const updateTransform = () => {
+                    const x = (window.innerWidth / 2 - mouseX) / 25;
+                    const y = (window.innerHeight / 2 - mouseY) / 25;
+                    heroVisual.style.transform = `rotateY(${x}deg) rotateX(${-y}deg) translateZ(0)`;
+                    ticking = false;
+                };
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isHeroVisible) return;
+
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+
+                    if (!ticking) {
+                        window.requestAnimationFrame(updateTransform);
+                        ticking = true;
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
