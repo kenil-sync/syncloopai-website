@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Syncloop AI · Marketing automation that runs itself</title>
+<meta name="description" content="Syncloop AI builds custom n8n and Claude automations for marketing-led teams. Real workflows, documented and handed over.">
+<meta property="og:title" content="Syncloop AI · Marketing automation that runs itself">
+<meta property="og:description" content="Custom n8n and Claude automations for marketing-led teams.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2307080a'/><path d='M5 20c5-9 8 5 13-4s6-3 9-5' fill='none' stroke='%237df0c9' stroke-width='2.4' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Instrument+Sans:wght@500;600&display=swap">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+  :root {
+    --sc-canvas: #07080a; --sc-surface: #0f1115;
+    --sc-ink: #f2f0ec;    --sc-ink-soft: #8f9298;
+    --sc-accent: #7df0c9; --sc-accent-ink: #06120e;
+    --sc-font-display: "Instrument Sans", system-ui, sans-serif;
+    --sc-font-text: "Geist", system-ui, sans-serif;
+    --flight: 0; --cy: 38vh;
+  }
+  /* header: one mark, one CTA label used everywhere */
+  .site-bar { position: fixed; inset: 0 0 auto 0; z-index: var(--sc-z-chrome); display: flex; justify-content: space-between; align-items: center; padding: max(1rem, env(safe-area-inset-top)) var(--sc-gutter) 0; pointer-events: none; }
+  .site-bar > * { pointer-events: auto; }
+  .mark { font-family: var(--sc-font-display); font-weight: 600; letter-spacing: -0.02em; color: var(--sc-ink); text-decoration: none; font-size: 1.05rem; }
+  .mark b { color: var(--sc-accent); font-weight: 600; }
+  .cta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.25rem; border-radius: 999px; background: var(--sc-accent); color: var(--sc-accent-ink); font-weight: 500; text-decoration: none; font-size: var(--sc-t-sm); transition: transform .25s var(--sc-ease-out), box-shadow .25s; }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -10px color-mix(in oklab, var(--sc-accent) 70%, transparent); }
+  .cta:focus-visible, .mark:focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 3px; }
+  .site-bar .cta { min-height: 38px; background: transparent; color: var(--sc-ink); border: 1px solid var(--sc-hairline-strong); }
+
+  /* scenes: the world. Each leg is a different place on the same line. */
+  .scn { position: absolute; inset: 0; overflow: hidden; }
+  .fr { position: absolute; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); width: 8vmin; height: 5vmin; border: 1px solid var(--sc-hairline-strong); border-radius: 7px; background: color-mix(in oklab, var(--sc-surface) 70%, transparent); rotate: calc(var(--r) * 1deg); translate: calc(var(--flight) * var(--d) * -22vw) 0; }
+  .fr::after { content: ""; position: absolute; left: 14%; right: 38%; top: 28%; height: 2px; border-radius: 2px; background: var(--sc-hairline-strong); box-shadow: 0 8px 0 var(--sc-hairline); }
+  .sc2 .fr { opacity: .55; }
+  .grid { background-image: linear-gradient(var(--sc-hairline) 1px, transparent 1px), linear-gradient(90deg, var(--sc-hairline) 1px, transparent 1px); background-size: 9vmin 9vmin; background-position: calc(var(--flight) * -30vmin) 0; -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% var(--cy), #000 8%, transparent 75%); mask-image: radial-gradient(ellipse 70% 55% at 50% var(--cy), #000 8%, transparent 75%); }
+  .glow { background: radial-gradient(ellipse 60% 38% at 50% var(--cy), color-mix(in oklab, var(--sc-accent) 16%, transparent), transparent 70%); }
+  .sc5 { background: radial-gradient(ellipse 80% 50% at 50% 100%, color-mix(in oklab, var(--sc-accent) 14%, transparent), transparent 70%); }
+
+  /* the thread: signature move. One line through the whole flight. */
+  .thread { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+  .thread path { fill: none; stroke: var(--sc-accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .thread .nd { fill: var(--sc-canvas); stroke: var(--sc-accent); stroke-width: 1.6; }
+  .thread .pulse { fill: var(--sc-accent); }
+  .nl { position: absolute; left: calc(var(--x) * 100vw); top: calc(var(--cy) + 22px); translate: -50% 0; width: 22vw; text-align: center; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: .04em; color: var(--sc-ink-soft); opacity: calc((var(--flight) - .56) * 14); }
+
+  /* copy anchors: lead, trail, centre, lead (wide), centre */
+  .mid, .fin { inset-inline: auto; left: 50%; translate: -50% 0; bottom: clamp(3rem, 12vh, 9rem); text-align: center; width: min(44rem, 88vw); }
+  .mid .sc-body, .fin .sc-body { margin-inline: auto; }
+  .wide { max-width: min(62rem, 88vw); }
+  .sc-body { font-size: var(--sc-t-base); margin-top: var(--sc-4); }
+  .sc-copy .cta { margin-top: var(--sc-5); }
+  .svc { list-style: none; margin: var(--sc-5) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sc-5); }
+  .svc li { border-top: 1px solid var(--sc-hairline-strong); padding-top: var(--sc-3); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
+  .svc strong { display: block; color: var(--sc-ink); font-weight: 500; margin-bottom: .2rem; }
+  .small { margin: var(--sc-6) 0 0; text-align: center; font-size: var(--sc-t-xs); color: var(--sc-ink-soft); }
+  .small a { color: inherit; }
+  @media (max-width: 860px) {
+    .mid, .fin { inset-inline: var(--sc-gutter); left: var(--sc-gutter); translate: none; width: auto; }
+    .svc { grid-template-columns: 1fr; gap: var(--sc-3); }
+    .svc li { padding-top: var(--sc-2); }
+    .nl { font-size: .62rem; width: 30vw; }
+    .nl:nth-of-type(even) { top: calc(var(--cy) + 46px); }
+    .fr { width: 14vmin; height: 9vmin; }
+  }
+</style>
+</head>
+<body>
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<header class="site-bar">
+  <a class="mark" href="#top">Syncloop<b>.</b>AI</a>
+  <a class="cta" href="mailto:kenil@syncloopai.com?subject=Book%20a%20call">Book a call</a>
+</header>
+
+<main id="top">
+<div data-sc-mode="worldflight" data-sc-seam="0.16" data-sc-lerp="0.12">
+
+  <div data-sc-world>
+    <!-- 1 Recognition: loose fragments of work -->
+    <div data-sc-segment data-sc-w="1" data-sc-waypoint="Noise"><div class="scn sc1" aria-hidden="true">
+      <i class="fr" style="--x:8;--y:12;--r:-9;--d:1.1"></i><i class="fr" style="--x:34;--y:40;--r:7;--d:.6"></i><i class="fr" style="--x:62;--y:10;--r:-4;--d:1.4"></i><i class="fr" style="--x:80;--y:44;--r:12;--d:.8"></i><i class="fr" style="--x:20;--y:58;--r:5;--d:1.2"></i><i class="fr" style="--x:50;--y:62;--r:-11;--d:.5"></i><i class="fr" style="--x:88;--y:18;--r:8;--d:1"></i></div></div>
+    <!-- 2 Tension: the same fragments, further apart and dimmer -->
+    <div data-sc-segment data-sc-w="1" data-sc-waypoint="Drift"><div class="scn sc2" aria-hidden="true">
+      <i class="fr" style="--x:14;--y:20;--r:11;--d:1.3"></i><i class="fr" style="--x:44;--y:8;--r:-8;--d:.7"></i><i class="fr" style="--x:70;--y:30;--r:6;--d:1.5"></i><i class="fr" style="--x:28;--y:48;--r:-13;--d:.9"></i><i class="fr" style="--x:84;--y:56;--r:4;--d:1.1"></i></div></div>
+    <!-- 3 Turn: a grid appears, things get a place -->
+    <div data-sc-segment data-sc-w="1" data-sc-waypoint="Connect"><div class="scn" aria-hidden="true"><div class="scn grid"></div><div class="scn glow"></div></div></div>
+    <!-- 4 Substance (the peak, the longest leg): the line runs straight -->
+    <div data-sc-segment data-sc-w="1.7" data-sc-waypoint="Run"><div class="scn" aria-hidden="true"><div class="scn grid"></div><div class="scn glow"></div>
+      <span class="nl" style="--x:.1667">Lead comes in</span><span class="nl" style="--x:.375">Claude reads it</span><span class="nl" style="--x:.625">n8n routes it</span><span class="nl" style="--x:.8333">Work is done</span></div></div>
+    <!-- 5 Commitment -->
+    <div data-sc-segment data-sc-w="1" data-sc-waypoint="Start"><div class="scn sc5" aria-hidden="true"></div></div>
+  </div>
+
+  <div data-sc-world-copy>
+    <div class="sc-world__scrim sc-scrim sc-scrim--band"></div>
+    <svg class="thread" aria-hidden="true"><path id="th"/><g id="nds"></g><circle class="pulse" id="pl" r="4" opacity="0"/></svg>
+
+    <div class="sc-copy sc-copy--lead" data-sc-copy data-sc-window="hero">
+      <h1 class="sc-display sc-display--xl">Marketing work that runs itself.</h1>
+      <p class="sc-body">Syncloop AI builds custom n8n and Claude automations for marketing-led teams. Real workflows, documented and handed over.</p>
+      <a class="cta" href="mailto:kenil@syncloopai.com?subject=Book%20a%20call">Book a call</a>
+    </div>
+
+    <div class="sc-copy sc-copy--trail" data-sc-copy data-sc-window="0.19 0.34">
+      <h2 class="sc-display sc-display--lg">Leads wait. Reports get rebuilt by hand. Follow-ups slip.</h2>
+      <p class="sc-body">Not because your team is slow. The work between your tools is still being done by people.</p>
+    </div>
+
+    <div class="sc-copy mid" data-sc-copy data-sc-window="0.37 0.51">
+      <h2 class="sc-display sc-display--lg">Connect the tools. Remove the repeat work.</h2>
+      <p class="sc-body">We map what your team repeats, then wire it into one workflow that triggers, thinks and finishes on its own.</p>
+    </div>
+
+    <div class="sc-copy sc-copy--lead wide" data-sc-copy data-sc-window="0.545 0.80">
+      <h2 class="sc-display sc-display--md">From a tangle to a line that runs.</h2>
+      <ul class="svc">
+        <li><strong>Lead response and routing</strong>Every enquiry answered and sorted in minutes.</li>
+        <li><strong>Content and reporting ops</strong>Briefs, drafts and weekly reports built for you.</li>
+        <li><strong>AI voice receptionist</strong>Answers calls and books appointments.</li>
+      </ul>
+    </div>
+
+    <div class="sc-copy fin" data-sc-copy data-sc-window="finale">
+      <h2 class="sc-display sc-display--lg">Tell us the task you repeat most.</h2>
+      <p class="sc-body">On a short call we will say plainly whether it can be automated and what it would take.</p>
+      <a class="cta" href="mailto:kenil@syncloopai.com?subject=Book%20a%20call">Book a call</a>
+      <p class="small">© Syncloop AI · <a href="mailto:kenil@syncloopai.com">kenil@syncloopai.com</a></p>
+    </div>
+  </div>
+
+  <div data-sc-spacer aria-hidden="true"></div>
+</div>
+</main>
+
+<script src="scrollcraft.js"></script>
+<script>
+ScrollCraft.mount(document);
+(function () {
+  var NS = 'http://www.w3.org/2000/svg', N = 24, NODES = [4, 9, 15, 20];
+  var th = document.getElementById('th'), g = document.getElementById('nds'), pl = document.getElementById('pl');
+  var sp = document.querySelector('[data-sc-spacer]'), root = document.documentElement;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var circles = NODES.map(function () { var c = document.createElementNS(NS, 'circle'); c.setAttribute('class', 'nd'); c.setAttribute('r', 6); g.appendChild(c); return c; });
+  var f = 0, W, H, cy, t0 = performance.now();
+  var cl = function (x) { return Math.min(1, Math.max(0, x)); };
+  var sm = function (a, b, x) { x = cl((x - a) / (b - a)); return x * x * (3 - 2 * x); };
+  var hash = function (i) { var s = Math.sin(i * 12.9898) * 43758.5453; return (s - Math.floor(s)) * 2 - 1; };
+  function size() { W = innerWidth; H = innerHeight; cy = H * (W < 860 ? 0.3 : 0.32); root.style.setProperty('--cy', cy + 'px'); }
+  function target() { var tr = Math.max(sp.offsetHeight - H, 1); return cl(scrollY / tr); }
+  function draw() {
+    var order = sm(0.30, 0.60, f), A = H * (0.08 + 0.06 * sm(0.05, 0.3, f)), P = [], i;
+    for (i = 0; i <= N; i++) {
+      var wob = Math.sin(i * 0.9 + f * 18);
+      P.push([i / N * W, cy + (1 - order) * A * (hash(i) * 0.8 + wob * 0.5)]);
+    }
+    var d = 'M' + P[0][0] + ' ' + P[0][1];
+    for (i = 1; i < N; i++) d += 'Q' + P[i][0] + ' ' + P[i][1] + ' ' + (P[i][0] + P[i + 1][0]) / 2 + ' ' + (P[i][1] + P[i + 1][1]) / 2;
+    d += 'L' + P[N][0] + ' ' + P[N][1];
+    th.setAttribute('d', d);
+    th.style.strokeOpacity = (0.35 + 0.65 * order).toFixed(3);
+    var on = sm(0.54, 0.62, f);
+    circles.forEach(function (c, k) { c.setAttribute('cx', P[NODES[k]][0]); c.setAttribute('cy', P[NODES[k]][1]); c.style.opacity = on; });
+    var a = P[NODES[0]][0], b = P[NODES[3]][0], u = reduce ? 0.5 : ((performance.now() - t0) / 3600) % 1;
+    pl.setAttribute('cx', a + (b - a) * u); pl.setAttribute('cy', cy); pl.setAttribute('opacity', sm(0.6, 0.66, f));
+    root.style.setProperty('--flight', f.toFixed(4));
+  }
+  function loop() {
+    var T = target(); f = reduce ? T : f + (T - f) * 0.12;
+    if (Math.abs(T - f) < 0.0004) f = T;
+    draw(); requestAnimationFrame(loop);
+  }
+  size(); addEventListener('resize', size); loop();
+  function relayout() { dispatchEvent(new Event('resize')); }
+  addEventListener('load', relayout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+})();
+</script>
+</body>
+</html>
