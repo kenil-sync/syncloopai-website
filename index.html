@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://assets.calendly.com">
 <link rel="stylesheet" href="scrollcraft.css">
 <style>
 :root{--bg-color:#E8EAF2;--card-bg:#F1F3F9;--text-primary:#1a1a1a;--text-secondary:#3d3d4b;--accent-blue:#4F46E5;--accent-purple:#9333EA;--accent-pink:#EC4899;--glass-border:rgba(255,255,255,.7);
@@ -191,6 +192,51 @@ details p{padding:0 24px 22px;color:var(--text-secondary)}
 footer a{color:inherit}
 @media(max-width:968px){.demo,.about{grid-template-columns:1fr}.about{text-align:center;justify-items:center}.hint{display:none}.cta-group{align-items:stretch}.band .container{flex-direction:column;gap:14px}}
 @media(max-width:640px){.cf{grid-template-columns:1fr}.about h2{font-size:1.8rem}.you-card q{font-size:1.15rem}}
+
+/* v3: features redesign, about, booking */
+.lt-lg{width:56px;height:56px;border-radius:18px}.lt-lg .lg{width:28px;height:28px}
+.f2{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.fc{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:28px;box-shadow:var(--clay-shadow-sm);padding:32px;display:flex;flex-direction:column;gap:14px;transition:transform .3s,box-shadow .3s}
+.fc:hover{transform:translateY(-4px);box-shadow:var(--clay-shadow-lg)}
+.fc h3{font-size:1.3rem;font-weight:700}.fc p{color:var(--text-secondary);font-size:.98rem}
+.fa{grid-column:span 2;flex-direction:row;align-items:center;gap:32px}.fa-t{flex:1}
+.fd{grid-column:span 2;justify-content:space-between}
+.orbit{position:relative;aspect-ratio:1;width:min(100%,360px);flex:none}
+.orbit>svg{position:absolute;inset:0;width:100%;height:100%}
+.ol{stroke:rgba(79,70,229,.3);stroke-width:1.5;stroke-dasharray:5 6;vector-effect:non-scaling-stroke;animation:dash 1.4s linear infinite}
+.orbit-c{position:absolute;left:50%;top:50%;translate:-50% -50%;width:76px;height:76px;border-radius:24px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));display:grid;place-items:center;box-shadow:0 14px 30px rgba(79,70,229,.35),inset 1px 1px 2px rgba(255,255,255,.4);z-index:2}
+.orbit-c svg{width:34px;height:34px}
+.orbit-c::before{content:"";position:absolute;inset:-12px;border-radius:32px;border:2px solid rgba(79,70,229,.25);animation:ring 3s ease-out infinite}
+@keyframes ring{from{scale:.85;opacity:1}to{scale:1.35;opacity:0}}
+.ot{position:absolute;translate:-50% -50%;display:grid;justify-items:center;gap:6px;font-size:.74rem;font-weight:700;color:var(--text-secondary);z-index:2;animation:bob 6s ease-in-out infinite}
+.ot:nth-of-type(even){animation-delay:1.5s}
+.appr{background:#fff;border-radius:18px;padding:16px;box-shadow:4px 4px 12px rgba(20,20,35,.06);margin-top:auto}
+.appr small{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-purple)}
+.appr p{color:var(--text-primary);font-size:.92rem;margin:6px 0 14px}
+.appr div{display:flex;gap:10px}.appr span{font-size:.82rem;font-weight:700;padding:8px 14px;border-radius:12px}
+.appr .ok{background:#DCFCE7;color:#15803D}.appr .ed{background:#EEF2FF;color:var(--accent-blue)}
+.bars{display:flex;align-items:flex-end;gap:14px;height:150px;padding:0 4px;margin-bottom:34px}
+.bars .b{flex:1;height:var(--h);border-radius:12px 12px 6px 6px;background:linear-gradient(180deg,#A5B4FC,var(--accent-blue));position:relative;transform-origin:bottom;scale:1 0;transition:scale .8s cubic-bezier(.16,1,.3,1) calc(var(--i)*.09s);box-shadow:3px 4px 10px rgba(79,70,229,.2)}
+.fd.active .bars .b{scale:1 1}
+.bars .b span{position:absolute;bottom:-24px;left:0;right:0;text-align:center;font-size:.7rem;color:var(--text-secondary);font-weight:600}
+.fd{padding-bottom:44px}.fd .capn{font-size:.78rem!important;margin-top:-4px}
+.about2{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,5vw,3.5rem);align-items:center;background:var(--card-bg);border:1px solid var(--glass-border);padding:clamp(1.6rem,4vw,3rem);border-radius:32px;box-shadow:var(--clay-shadow-lg);max-width:980px;margin:0 auto}
+.ph{width:176px;height:176px;border-radius:50%;padding:6px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple),var(--accent-pink));box-shadow:0 16px 34px rgba(79,70,229,.25)}
+.ph img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid var(--card-bg);display:block}
+.about2 h2{font-size:2.4rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.role{color:var(--accent-blue)!important;font-weight:700;margin:4px 0 16px}
+.about2 p{color:var(--text-secondary);margin-bottom:12px}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chips li{font-size:.82rem;font-weight:700;padding:8px 14px;border-radius:99px;background:#fff;color:var(--text-primary);box-shadow:3px 3px 8px rgba(20,20,35,.06)}
+.book{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start}
+.cal,.cf-card{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:30px;box-shadow:var(--clay-shadow-lg);overflow:hidden}
+.calw{min-width:300px;height:700px}.calload{padding:40px;text-align:center;color:var(--text-secondary)}
+.calfb{display:block;text-align:center;padding:12px;font-size:.85rem;color:var(--text-secondary)}
+.cf-card{padding:32px}.cf-card h3{font-size:1.4rem;font-weight:700;margin-bottom:6px}.cf-card>p{color:var(--text-secondary);margin-bottom:20px}
+.cf-card .cf{grid-template-columns:1fr;max-width:none;margin:0}.cf-card .btn-primary{width:100%}
+.cf-card .alts{margin-top:18px;justify-content:flex-start}
+@media(max-width:968px){.f2{grid-template-columns:1fr}.fa,.fd{grid-column:auto}.fa{flex-direction:column}.about2{grid-template-columns:1fr;justify-items:center;text-align:center}.chips{justify-content:center}.book{grid-template-columns:1fr}.calw{height:760px}.ph{width:150px;height:150px}.cf-card .alts{justify-content:center}}
+@media(max-width:640px){.fc{padding:24px}.about2 h2{font-size:2rem}.orbit{width:min(100%,320px)}.lt-lg{width:48px;height:48px;border-radius:15px}.lt-lg .lg{width:24px;height:24px}}
 </style>
 </head>
 <body>
@@ -209,7 +255,7 @@ footer a{color:inherit}
   <div class="hero-badge"><span style="width:8px;height:8px;background:var(--accent-purple);display:inline-block;border-radius:50px"></span>Friendly automation for busy teams</div>
   <h1>Stop repeating yourself. <br><span class="gradient-text">Let automation do it.</span></h1>
   <p>Tired of missed calls, slow follow-ups and Monday report marathons? We build custom automations that handle them for you, so you can get back to the work you enjoy.</p>
-  <div class="cta-group"><a href="#contact" class="btn-primary">Let’s chat about your busiest task</a><a href="#story" class="btn-secondary">See it in action</a></div><p class="soft">Free 20-minute call. No pitch, no pressure.</p>
+  <div class="cta-group"><a href="#contact" class="btn-primary">Let’s chat about your busiest task</a><a href="#story" class="btn-secondary">See it in action</a></div><p class="soft">Free 30-minute call. No pitch, no pressure.</p>
  </div>
  <div class="hero-visual" id="heroVisual" aria-hidden="true">
   <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
@@ -298,21 +344,19 @@ footer a{color:inherit}
 </div></section>
 
 <section id="features"><div class="container">
- <div class="section-header reveal"><span class="section-tag">What you get</span><h2>Built for Scale, <span class="gradient-text">Designed for Humans.</span></h2><p>Everything you need to run repetitive work on autopilot, wrapped around the tools you already use.</p></div>
- <div class="bento-grid reveal">
-  <div class="bento-item bento-large">
-   <div style="z-index:2"><h3>Seamless Integrations</h3><p>Connect your existing stack. SyncLoop AI talks to your CRM, Slack, Notion, email and custom APIs, with no manual copy-pasting.</p></div>
-   <div class="hub-container">
-    <svg class="hub-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line class="hub-line" x1="50%" y1="50%" x2="20%" y2="16%"/><line class="hub-line" x1="50%" y1="50%" x2="80%" y2="16%"/><line class="hub-line" x1="50%" y1="50%" x2="24%" y2="86%"/><line class="hub-line" x1="50%" y1="50%" x2="76%" y2="86%"/></svg>
-    <div class="hub-center">⏣</div>
-    <div class="hub-node node-1"><svg class="lg" viewBox="0 0 448 512" aria-label="slack" role="img"><path fill="#4A154B" d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"/></svg>Slack</div><div class="hub-node node-2"><svg class="lg" viewBox="0 0 24 24" aria-label="hubspot" role="img"><path fill="#FF7A59" d="M18.164 7.93V5.084a2.2 2.2 0 0 0 1.267-1.978v-.067A2.2 2.2 0 0 0 17.238.845h-.067a2.2 2.2 0 0 0-2.193 2.193v.067a2.2 2.2 0 0 0 1.252 1.973l.013.006v2.852a6.2 6.2 0 0 0-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 1 0 4.3 4.656l-.012.006 7.697 5.991a6.18 6.18 0 0 0-1.038 3.446 6.2 6.2 0 0 0 1.147 3.607l-.013-.02-2.342 2.343a2 2 0 0 0-.58-.095h-.002a2.033 2.033 0 1 0 2.033 2.033 2 2 0 0 0-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 1 0 4.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 1 1 3.215-3.207v.002a3.206 3.206 0 0 1-3.207 3.207z"/></svg>HubSpot</div><div class="hub-node node-3"><svg class="lg" viewBox="0 0 24 24" aria-label="notion" role="img"><path fill="#111111" d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632"/></svg>Notion</div><div class="hub-node node-4"><svg class="lg" viewBox="0 0 24 24" aria-label="gmail" role="img"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg>Gmail</div>
-   </div>
+ <div class="section-header reveal"><span class="section-tag">What you get</span><h2>Connected to your tools. <span class="gradient-text">Under your control.</span></h2><p>Everything we build plugs into the apps you already use and runs in accounts you own.</p></div>
+ <div class="f2">
+  <div class="fc fa reveal">
+   <div class="fa-t"><h3>Works with the tools you already use</h3><p>Gmail, Slack, HubSpot, Notion, Google Sheets, your calendar and hundreds more through n8n. Data moves between them automatically, with no copy-pasting.</p>
+   <ul class="ticks"><li>One workflow can span every tool you use</li><li>Custom API connections when an app isn’t on the list</li></ul></div>
+   <div class="orbit" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line class="ol" x1="50" y1="50" x2="50" y2="12"/><line class="ol" x1="50" y1="50" x2="83" y2="31"/><line class="ol" x1="50" y1="50" x2="83" y2="69"/><line class="ol" x1="50" y1="50" x2="50" y2="88"/><line class="ol" x1="50" y1="50" x2="17" y2="69"/><line class="ol" x1="50" y1="50" x2="17" y2="31"/></svg><div class="orbit-c"><svg viewBox="0 0 16 16"><path d="M3 4h6a2.5 2.5 0 010 5H6m0 0h4a2.5 2.5 0 010 5H3" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div><div class="ot" style="left:50%;top:12%"><div class="lt lt-lg"><svg class="lg" viewBox="0 0 24 24" aria-label="gmail" role="img"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg></div><span>Gmail</span></div><div class="ot" style="left:83%;top:31%"><div class="lt lt-lg"><svg class="lg" viewBox="0 0 448 512" aria-label="slack" role="img"><path fill="#4A154B" d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"/></svg></div><span>Slack</span></div><div class="ot" style="left:83%;top:69%"><div class="lt lt-lg"><svg class="lg" viewBox="0 0 24 24" aria-label="hubspot" role="img"><path fill="#FF7A59" d="M18.164 7.93V5.084a2.2 2.2 0 0 0 1.267-1.978v-.067A2.2 2.2 0 0 0 17.238.845h-.067a2.2 2.2 0 0 0-2.193 2.193v.067a2.2 2.2 0 0 0 1.252 1.973l.013.006v2.852a6.2 6.2 0 0 0-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 1 0 4.3 4.656l-.012.006 7.697 5.991a6.18 6.18 0 0 0-1.038 3.446 6.2 6.2 0 0 0 1.147 3.607l-.013-.02-2.342 2.343a2 2 0 0 0-.58-.095h-.002a2.033 2.033 0 1 0 2.033 2.033 2 2 0 0 0-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 1 0 4.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 1 1 3.215-3.207v.002a3.206 3.206 0 0 1-3.207 3.207z"/></svg></div><span>HubSpot</span></div><div class="ot" style="left:50%;top:88%"><div class="lt lt-lg"><svg class="lg" viewBox="0 0 24 24" aria-label="notion" role="img"><path fill="#111111" d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632"/></svg></div><span>Notion</span></div><div class="ot" style="left:17%;top:69%"><div class="lt lt-lg"><svg class="lg" viewBox="0 0 24 24" aria-label="sheets" role="img"><path fill="#34A853" d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6zm1.363 10.636h-3.41v1.91h3.41zm0 3.273h-3.41v1.91h3.41zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/></svg></div><span>Sheets</span></div><div class="ot" style="left:17%;top:31%"><div class="lt lt-lg"><svg class="lg" viewBox="0 0 24 24" aria-label="cal" role="img"><path fill="#4285F4" d="M18.316 5.684H24v12.632h-5.684zM5.684 24h12.632v-5.684H5.684zM18.316 5.684V0H1.895A1.894 1.894 0 0 0 0 1.895v16.421h5.684V5.684zm-7.207 6.25v-.065q.407-.216.687-.617c.28-.401.279-.595.279-.982q0-.568-.3-1.025a2.05 2.05 0 0 0-.832-.714 2.7 2.7 0 0 0-1.197-.257q-.9 0-1.481.467-.579.467-.793 1.078l1.085.452q.13-.374.413-.633.284-.258.767-.257.495 0 .816.264a.86.86 0 0 1 .322.703q0 .495-.36.778t-.886.284h-.567v1.085h.633q.611 0 1.02.327.407.327.407.843 0 .505-.387.832c-.387.327-.565.327-.924.327q-.527 0-.897-.311-.372-.312-.521-.881l-1.096.452q.268.923.977 1.401.707.479 1.538.477a2.84 2.84 0 0 0 1.293-.291q.574-.29.902-.794.327-.505.327-1.149 0-.643-.344-1.105a2.07 2.07 0 0 0-.881-.689m2.093-1.931.602.913L15 10.045v5.744h1.187V8.446h-.827zM22.105 0h-3.289v5.184H24V1.895A1.894 1.894 0 0 0 22.105 0m-3.289 23.5 4.684-4.684h-4.684zM0 22.105C0 23.152.848 24 1.895 24h3.289v-5.184H0z"/></svg></div><span>Calendar</span></div></div>
   </div>
-  <div class="bento-item"><h3>Human-in-the-Loop</h3><p>AI does the repetitive work. For critical tasks, it pauses for your team's final approval.</p></div>
-  <div class="bento-item"><h3>You Own It</h3><p>Workflows run in accounts you control, with documentation, so you are never locked in.</p></div>
-  <div class="bento-item bento-wide"><div><h3>Track What It Saves</h3><p>See every automation's runs, time saved and success rate in one place.</p></div>
-   <div class="chart-3d-container"><div class="chart-3d"><div class="bar-3d" style="height:40px"></div><div class="bar-3d" style="height:70px"></div><div class="bar-3d" style="height:50px"></div><div class="bar-3d" style="height:90px"></div><div class="bar-3d" style="height:60px"></div><div class="bar-3d" style="height:80px"></div><div class="bar-3d" style="height:100px"></div></div></div>
-  </div>
+  <div class="fc fb reveal"><h3>You stay in control</h3><p>For important steps, the workflow pauses and waits for your approval.</p>
+   <div class="appr"><small>Ready to send</small><p>“Hi Sam, thanks for getting in touch. We have Thursday at 10:30 available. Shall I book it?”</p><div><span class="ok">✓ Approve</span><span class="ed">Edit</span></div></div></div>
+  <div class="fc fc2 reveal"><h3>You own it</h3><p>Workflows run in your accounts, with full documentation, so you are never locked in.</p>
+   <ul class="ticks"><li>Your accounts and your data</li><li>Documentation included</li></ul></div>
+  <div class="fc fd reveal"><div><h3>See what it saves</h3><p>Track runs, time saved and success rate in one simple view.</p></div>
+   <div class="bars" role="img" aria-label="Illustrative chart: hours saved per week rising over seven weeks"><div class="b" style="--h:28%;--i:0"><span>W1</span></div><div class="b" style="--h:40%;--i:1"><span>W2</span></div><div class="b" style="--h:36%;--i:2"><span>W3</span></div><div class="b" style="--h:58%;--i:3"><span>W4</span></div><div class="b" style="--h:66%;--i:4"><span>W5</span></div><div class="b" style="--h:78%;--i:5"><span>W6</span></div><div class="b" style="--h:92%;--i:6"><span>W7</span></div></div><p class="capn">Illustrative example</p></div>
  </div>
 </div></section>
 
@@ -328,22 +372,23 @@ footer a{color:inherit}
 <section id="process"><div class="container">
  <div class="section-header reveal"><span class="section-tag">What happens next</span><h2>After You Say <span class="gradient-text">Hello.</span></h2><p>No pressure and no jargon. Here is exactly how it goes.</p></div>
  <div class="process-grid">
-  <div class="process-card reveal"><div class="step-number" aria-hidden="true">1</div><h3>We chat</h3><p>A free 20-minute call. You tell us the task you repeat most, and we listen.</p></div>
+  <div class="process-card reveal"><div class="step-number" aria-hidden="true">1</div><h3>We chat</h3><p>A free 30-minute call. You tell us the task you repeat most, and we listen.</p></div>
   <div class="process-card reveal"><div class="step-number" aria-hidden="true">2</div><h3>We suggest a plan</h3><p>You get a clear plan, a timeline and a fixed price agreed before we start.</p></div>
   <div class="process-card reveal"><div class="step-number" aria-hidden="true">3</div><h3>You decide</h3><p>If you’re in, we build, test and hand it over, with a simple guide. If not, no hard feelings.</p></div>
  </div>
  <p class="promise reveal">Our promise: if we can’t automate it, we’ll tell you plainly.</p>
 </div></section>
 
-<section id="about"><div class="container about reveal">
- <div class="avatar-lg" aria-hidden="true"><!-- To use a photo: replace the K with <img src="kenil.jpg" alt="Kenil"> -->K</div>
+<section id="about"><div class="container reveal"><div class="about2">
+ <div class="ph"><img src="kenil.jpg" alt="Kenil, founder of SyncLoop AI" width="160" height="160" loading="lazy"></div>
  <div>
-  <span class="section-tag">Who’s behind this</span>
-  <h2>Hi, I’m Kenil.</h2>
-  <p>I’m a marketer who builds the automation. I know how much time disappears into follow-ups, reports and missed calls, so I build the systems that take that work off your plate.</p>
-  <p>You’ll talk to me directly, in plain English, from the first chat to the day it goes live. I reply to every message personally, usually within a day.</p>
+  <span class="section-tag">Meet your automation partner</span>
+  <h2>Kenil</h2><p class="role">Founder, SyncLoop AI · AI automation specialist</p>
+  <p>I design and build AI automations for service businesses and marketing teams: voice receptionists that answer and book, lead systems that connect your forms, inbox and CRM, and reports that assemble themselves.</p>
+  <p>Every project is built by me, end to end, on n8n and Claude, tested before launch and handed over with documentation so the system belongs to you. You work with the person doing the build, from the first call to go-live.</p>
+  <ul class="chips"><li>AI voice agents</li><li>Lead-to-CRM automation</li><li>Automated reporting</li><li>n8n · Claude · Vapi</li></ul>
  </div>
-</div></section>
+</div></div></section>
 
 <section id="faq"><div class="container faqs">
  <div class="section-header reveal"><span class="section-tag">Questions</span><h2>Things People <span class="gradient-text">Often Ask</span></h2></div>
@@ -356,18 +401,23 @@ footer a{color:inherit}
 </div></section>
 
 
-<section id="contact"><div class="container"><div class="cta-container reveal">
- <h2>Ready to Get Your Day <span class="gradient-text">Back?</span></h2>
- <p>Tell us the task you repeat most. On a short call we’ll say plainly whether it can be automated.</p>
- <form id="cf" class="cf" novalidate>
-  <label>Your name<input name="name" autocomplete="name" required></label>
-  <label>Your email<input name="email" type="email" autocomplete="email" required></label>
-  <label class="full">What task do you repeat most?<textarea name="task" rows="3" placeholder="For example: answering the same calls, chasing leads, building weekly reports"></textarea></label>
-  <button class="btn-primary full" type="submit">Send my message</button>
-  <p id="thanks" class="thanks" role="status" aria-live="polite" hidden>Thank you! Your email app should open with your message ready to send. I’ll reply personally, usually within a day.</p>
- </form>
- <div class="alts"><a class="btn-secondary" href="#contact" data-book>Book a call</a><a class="btn-secondary" href="https://wa.me/" data-wa hidden>Message on WhatsApp</a><a class="btn-secondary" href="mailto:kenil@syncloopai.com">Email us</a></div>
-</div></div></section>
+<section id="contact"><div class="container">
+ <div class="section-header reveal"><span class="section-tag">Let’s talk</span><h2>Pick a time that <span class="gradient-text">suits you.</span></h2><p>A free 30-minute call. Tell us the task you repeat most and we’ll say plainly whether it can be automated.</p></div>
+ <div class="book">
+  <div class="cal reveal"><div id="cal" class="calw" data-url="https://calendly.com/kenil-syncloopai/30min"><p class="calload">Loading calendar…</p></div>
+   <a class="calfb" href="https://calendly.com/kenil-syncloopai/30min" target="_blank" rel="noopener" data-booklink>Calendar not showing? Open the booking page</a></div>
+  <div class="cf-card reveal"><h3>Prefer to write?</h3><p>Send a message and I’ll reply personally, usually within a day.</p>
+   <form id="cf" class="cf" novalidate>
+    <label>Your name<input name="name" autocomplete="name" required></label>
+    <label>Your email<input name="email" type="email" autocomplete="email" required></label>
+    <label>What task do you repeat most?<textarea name="task" rows="4" placeholder="For example: answering the same calls, chasing leads, weekly reports"></textarea></label>
+    <button class="btn-primary" type="submit">Send my message</button>
+    <p id="thanks" class="thanks" role="status" aria-live="polite" hidden>Thank you! Your email app should open with your message ready to send.</p>
+   </form>
+   <div class="alts"><a class="btn-secondary" href="https://wa.me/" data-wa hidden>WhatsApp</a><a class="btn-secondary" href="mailto:kenil@syncloopai.com">Email us</a></div>
+  </div>
+ </div>
+</div></section>
 </main>
 <footer><div class="container"><p>&copy; 2026 SyncLoop AI · <a href="mailto:kenil@syncloopai.com">kenil@syncloopai.com</a> · syncloopai.com</p><p style="font-size:.8rem;margin-top:6px">We only use your details to reply to you, and we never share them.</p></div></footer>
 
@@ -386,10 +436,13 @@ ScrollCraft.mount(document);
  function upd(){var y=innerHeight*.45,cur=null;ids.forEach(function(id){var b=document.getElementById(id).getBoundingClientRect();if(b.top<y&&b.bottom>y)cur=id});for(var k in links)links[k].classList.toggle('on',k===cur)}
  addEventListener('scroll',upd,{passive:true});upd();
  // ---- One place to edit: add your details here and the page updates itself ----
- var CFG={booking:'',whatsapp:'',demoPhone:'',email:'kenil@syncloopai.com'};
+ var CFG={booking:'https://calendly.com/kenil-syncloopai/30min',whatsapp:'',demoPhone:'',email:'kenil@syncloopai.com'};
  // booking: your Calendly / Cal.com link, e.g. 'https://cal.com/yourname/20min'
  // whatsapp: digits only with country code, e.g. '919876543210'   demoPhone: e.g. '+1 555 123 4567'
- document.querySelectorAll('[data-book]').forEach(function(a){if(CFG.booking){a.href=CFG.booking;a.target='_blank';a.rel='noopener'}});
+ document.querySelectorAll('[data-booklink]').forEach(function(a){a.href=CFG.booking});
+ var calEl=document.getElementById('cal');
+ function loadCal(){if(loadCal.d||!calEl)return;loadCal.d=1;var sc=document.createElement('script');sc.src='https://assets.calendly.com/assets/external/widget.js';sc.async=true;sc.onload=function(){calEl.innerHTML='';Calendly.initInlineWidget({url:CFG.booking+'?hide_gdpr_banner=1&background_color=f1f3f9&text_color=1a1a1a&primary_color=4f46e5',parentElement:calEl})};document.head.appendChild(sc)}
+ if(calEl){if('IntersectionObserver' in window){new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){loadCal();ob.disconnect()}},{rootMargin:'700px'}).observe(calEl)}else loadCal()}
  document.querySelectorAll('[data-wa]').forEach(function(a){if(CFG.whatsapp){a.href='https://wa.me/'+CFG.whatsapp+'?text='+encodeURIComponent('Hi Kenil, I would like to talk about automating a task.');a.hidden=false}});
  document.querySelectorAll('[data-demo]').forEach(function(a){if(CFG.demoPhone){a.href='tel:'+CFG.demoPhone.replace(/\s/g,'');a.textContent='Call the demo line: '+CFG.demoPhone}});
  var cf=document.getElementById('cf');
