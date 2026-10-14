@@ -1,241 +1,278 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Syncloop AI · Automation for marketing and front-desk teams</title>
-<meta name="description" content="Syncloop AI builds custom n8n and Claude automations: AI voice receptionists, lead capture to CRM with instant follow-up, and weekly reports that write themselves.">
-<meta property="og:title" content="Syncloop AI · Automation that runs your busywork">
-<meta property="og:description" content="AI voice receptionist, lead follow-up and weekly reports, built on n8n and Claude.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234f46e5'/><path d='M8 9h8a4 4 0 010 8H12m0 0h8a4 4 0 010 8h-8' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round'/></svg>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="SyncLoop AI builds custom AI automation systems that eliminate repetitive tasks, streamline workflows, and scale your business on autopilot.">
+<title>SyncLoop AI | Automate the Grind. Amplify Your Growth.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="scrollcraft.css">
 <style>
-  :root {
-    --sc-canvas: #f6f7fb; --sc-surface: #ffffff;
-    --sc-ink: #0e1224;    --sc-ink-soft: #596077;
-    --sc-accent: #4f46e5; --sc-accent-ink: #ffffff;
-    --sc-font-display: "Instrument Sans", system-ui, sans-serif;
-    --sc-font-text: "Geist", system-ui, sans-serif;
-    --shadow: 0 1px 2px rgba(14,18,36,.05), 0 12px 32px -12px rgba(14,18,36,.14);
-  }
-  html { scroll-behavior: smooth; }
-  /* nav: one CTA label used everywhere */
-  .nav { position: fixed; inset: 0 0 auto 0; z-index: var(--sc-z-chrome); display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem var(--sc-gutter); background: color-mix(in oklab, var(--sc-canvas) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--sc-hairline); }
-  .mark { font-family: var(--sc-font-display); font-weight: 600; font-size: 1.1rem; letter-spacing: -.02em; color: var(--sc-ink); text-decoration: none; display: flex; align-items: center; gap: .55rem; }
-  .mark i { width: 24px; height: 24px; border-radius: 7px; background: var(--sc-accent); display: grid; place-items: center; }
-  .mark svg { width: 14px; height: 14px; }
-  .links { display: flex; gap: 1.6rem; margin-left: auto; margin-right: 1rem; }
-  .links a { color: var(--sc-ink-soft); text-decoration: none; font-size: var(--sc-t-sm); }
-  .links a:hover { color: var(--sc-ink); }
-  .cta { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 1.4rem; border-radius: 10px; background: var(--sc-accent); color: var(--sc-accent-ink); font-weight: 500; font-size: var(--sc-t-sm); text-decoration: none; box-shadow: 0 8px 20px -8px color-mix(in oklab, var(--sc-accent) 70%, transparent); transition: transform .2s var(--sc-ease-out), box-shadow .2s; }
-  .cta:hover { transform: translateY(-2px); box-shadow: 0 14px 26px -10px color-mix(in oklab, var(--sc-accent) 80%, transparent); }
-  .cta:focus-visible, .mark:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 3px; }
-  .nav .cta { min-height: 38px; padding: 0 1.1rem; }
-  .ghost { background: transparent; color: var(--sc-ink); border: 1px solid var(--sc-hairline-strong); box-shadow: none; }
-  .eyebrow { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--sc-accent); margin: 0 0 var(--sc-4); }
+:root{--bg-color:#E8EAF2;--card-bg:#F1F3F9;--text-primary:#1a1a1a;--text-secondary:#4a4a55;--accent-blue:#4F46E5;--accent-purple:#9333EA;--accent-pink:#EC4899;--glass-border:rgba(255,255,255,.7);
+--clay-shadow-sm:8px 8px 16px rgba(20,20,35,.08),-8px -8px 16px rgba(255,255,255,.5);--clay-shadow-lg:25px 25px 50px rgba(20,20,35,.1),-25px -25px 50px rgba(255,255,255,.4);
+--sc-canvas:#E8EAF2;--sc-ink:#1a1a1a;--sc-accent:#4F46E5;--sc-font-text:'Plus Jakarta Sans',sans-serif;--sc-font-display:'Plus Jakarta Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;background-color:var(--bg-color);color:var(--text-primary);line-height:1.6;overflow-x:hidden;
+background-image:radial-gradient(at 10% 10%,rgba(79,70,229,.08) 0,transparent 50%),radial-gradient(at 90% 10%,rgba(236,72,153,.08) 0,transparent 50%),radial-gradient(at 90% 90%,rgba(147,51,234,.08) 0,transparent 50%),radial-gradient(at 10% 90%,rgba(79,70,229,.06) 0,transparent 50%)}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent-blue);outline-offset:4px;border-radius:8px}
+[data-sc-progress]{background:linear-gradient(90deg,var(--accent-blue),var(--accent-purple),var(--accent-pink))!important}
+.bg-shape{position:fixed;z-index:-1;border-radius:30%;filter:blur(80px);opacity:.3;pointer-events:none}
+.shape-1{width:300px;height:300px;background:#C7D2FE;top:20%;left:-100px;animation:floatBg 15s ease-in-out infinite}
+.shape-2{width:400px;height:400px;background:#FBCFE8;bottom:10%;right:-150px;animation:floatBg 18s ease-in-out infinite reverse}
+@keyframes floatBg{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,30px) scale(1.1)}}
+nav{position:fixed;top:20px;width:calc(100% - 40px);max-width:1180px;left:50%;transform:translateX(-50%);padding:16px 32px;background:rgba(241,243,249,.75);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:100px;z-index:1000;box-shadow:0 15px 35px rgba(20,20,35,.05);display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.4rem;font-weight:800;text-decoration:none;color:var(--text-primary);display:flex;align-items:center;gap:8px}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;box-shadow:4px 6px 12px rgba(79,70,229,.3),inset 1px 1px 2px rgba(255,255,255,.4)}
+.nav-links a{color:var(--text-secondary);text-decoration:none;margin-left:32px;font-size:.95rem;font-weight:500;transition:color .3s}.nav-links a:hover{color:var(--accent-blue)}
+.btn-nav{white-space:nowrap;background:var(--text-primary);color:#fff;padding:12px 24px;border-radius:100px;text-decoration:none;font-weight:600;font-size:.9rem;transition:transform .2s,box-shadow .2s;box-shadow:4px 6px 12px rgba(20,20,35,.15)}
+.btn-nav:hover{transform:translateY(-2px);box-shadow:6px 10px 20px rgba(20,20,35,.2)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:space-between;padding-top:120px;perspective:1200px}
+.hero-content{max-width:550px;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--card-bg);padding:10px 20px;border-radius:100px;font-size:.85rem;font-weight:600;color:var(--accent-purple);margin-bottom:24px;box-shadow:var(--clay-shadow-sm)}
+.hero h1{font-size:4.5rem;line-height:1.05;margin-bottom:24px;font-weight:800;letter-spacing:-.03em}
+.gradient-text{background:linear-gradient(90deg,var(--accent-blue),var(--accent-purple),var(--accent-pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.25rem;color:var(--text-secondary);margin-bottom:40px}
+.cta-group{display:flex;gap:16px}
+.btn-primary{display:inline-block;background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));color:#fff;padding:18px 32px;border-radius:16px;text-decoration:none;font-weight:700;font-size:1rem;transition:transform .2s,box-shadow .2s;box-shadow:8px 10px 25px rgba(79,70,229,.3),inset 1px 1px 1px rgba(255,255,255,.2);border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:12px 15px 35px rgba(79,70,229,.4)}
+.btn-secondary{background:var(--card-bg);color:var(--text-primary);padding:18px 32px;border-radius:16px;text-decoration:none;font-weight:700;font-size:1rem;transition:transform .2s,box-shadow .2s;box-shadow:var(--clay-shadow-sm);border:1px solid rgba(0,0,0,.02)}
+.btn-secondary:hover{transform:translateY(-3px);box-shadow:var(--clay-shadow-lg)}
+/* real brand logos on clay tiles */
+.lg{width:24px;height:24px;display:block;flex:none}
+.lt{flex:none;width:44px;height:44px;border-radius:14px;background:#fff;display:grid;place-items:center;box-shadow:4px 5px 12px rgba(20,20,35,.1),inset 1px 1px 2px rgba(255,255,255,.9)}
+.hero-visual{position:relative;width:500px;height:500px;transform-style:preserve-3d;transition:transform .1s ease-out}
+.visual-card-main{position:absolute;width:340px;height:420px;top:40px;left:80px;background:rgba(241,243,249,.6);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:30px;box-shadow:var(--clay-shadow-lg);transform:translateZ(50px);padding:24px;display:flex;flex-direction:column;justify-content:space-between}
+.card-header{display:flex;justify-content:space-between;align-items:center}.card-title{font-weight:700;font-size:1.1rem}
+.card-status{background:#DCFCE7;color:#16A34A;padding:6px 12px;border-radius:20px;font-size:.75rem;font-weight:600;box-shadow:inset 2px 2px 4px rgba(0,0,0,.05)}
+.automation-step{background:#fff;padding:14px;border-radius:16px;display:flex;align-items:center;gap:12px;box-shadow:4px 4px 10px rgba(20,20,35,.04);transform:translateZ(20px);margin-bottom:12px;animation:pulseStep 6s infinite}
+.automation-step:nth-child(2){animation-delay:2s}.automation-step:nth-child(3){animation-delay:4s}
+@keyframes pulseStep{0%,8%,40%,100%{box-shadow:4px 4px 10px rgba(20,20,35,.04)}15%,30%{box-shadow:0 0 0 3px rgba(79,70,229,.25),4px 4px 10px rgba(20,20,35,.04)}}
+.automation-step .lt{width:40px;height:40px;border-radius:12px;box-shadow:inset 2px 2px 4px rgba(0,0,0,.05)}
+.step-text h4{font-size:.95rem}.step-text p{font-size:.8rem;color:var(--text-secondary);margin:0}
+.orb{position:absolute;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;box-shadow:10px 10px 30px rgba(20,20,35,.1),inset 2px 2px 5px rgba(255,255,255,.8);animation:float 6s ease-in-out infinite}
+.orb-1{width:160px;height:160px;background:linear-gradient(135deg,#FF80B5,#EF4444);top:-20px;right:40px;transform:translateZ(100px)}
+.orb-2{width:120px;height:120px;background:linear-gradient(135deg,#4F46E5,#06B6D4);bottom:30px;left:-20px;transform:translateZ(80px);animation-delay:2s}
+.orb-3{width:90px;height:90px;background:linear-gradient(135deg,#FBBF24,#F97316);bottom:-10px;right:80px;transform:translateZ(120px);animation-delay:4s}
+@keyframes float{0%,100%{transform:translateZ(100px) translateY(0)}50%{transform:translateZ(100px) translateY(-25px)}}
+.stats-bar{display:flex;justify-content:space-between;background:var(--card-bg);padding:40px;border-radius:30px;box-shadow:var(--clay-shadow-lg);margin-top:40px;flex-wrap:wrap;gap:20px}
+.stat-item{text-align:center;flex:1;min-width:150px}
+.stat-num{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{color:var(--text-secondary);font-weight:500}
+section{padding:80px 0;position:relative}
+.section-header{text-align:center;margin-bottom:60px}
+.section-tag{color:var(--accent-blue);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;margin-bottom:12px;display:block}
+.section-header h2{font-size:3rem;margin-bottom:16px;font-weight:800;letter-spacing:-.02em}
+.section-header p{color:var(--text-secondary);max-width:600px;margin:0 auto;font-size:1.1rem}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+.service-card{background:var(--card-bg);padding:40px;border-radius:30px;transition:transform .3s ease,box-shadow .3s ease;box-shadow:var(--clay-shadow-sm);border:1px solid var(--glass-border)}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--clay-shadow-lg)}
+.icon-3d{width:64px;height:64px;border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;box-shadow:6px 6px 15px rgba(20,20,35,.1),inset 2px 2px 5px rgba(255,255,255,.9)}
+.bg-blue{background:linear-gradient(135deg,#E0E7FF,#A5B4FC);color:var(--accent-blue)}.bg-purple{background:linear-gradient(135deg,#F3E8FF,#C4B5FD);color:var(--accent-purple)}.bg-pink{background:linear-gradient(135deg,#FCE7F3,#F9A8D4);color:var(--accent-pink)}
+.service-card h3{font-size:1.5rem;margin-bottom:12px;font-weight:700}.service-card p{color:var(--text-secondary)}
 
-  /* hero */
-  .hero { padding-top: clamp(6.5rem, 14vh, 9rem); padding-bottom: var(--sc-9); }
-  .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
-  .btns { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--sc-6); }
-  .hero .sc-body { font-size: var(--sc-t-lg); line-height: 1.5; margin-top: var(--sc-5); max-width: 40ch; }
+/* scroll story (pinned, driven by --sc-p) */
+#story{padding:0}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center;max-width:1200px;margin:0 auto;padding:96px 24px 24px}
+.story h2{font-size:clamp(1.8rem,1rem + 2.6vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:28px}
+.caps{position:relative;height:190px}
+.cap{position:absolute;inset:0}.cap h3{font-size:1.5rem;font-weight:700;margin-bottom:8px}.cap p{color:var(--text-secondary);font-size:1.05rem;max-width:30rem}.cap small{display:block;color:var(--accent-purple);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;margin-bottom:8px}
+.cap1{opacity:clamp(0,calc((.38 - var(--sc-p))*10),1)}
+.cap2{opacity:min(clamp(0,calc((var(--sc-p) - .3)*10),1),clamp(0,calc((.74 - var(--sc-p))*10),1))}
+.cap3{opacity:clamp(0,calc((var(--sc-p) - .66)*10),1)}
+.story-card{background:rgba(241,243,249,.6);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:30px;box-shadow:var(--clay-shadow-lg);padding:24px;width:100%;max-width:470px;justify-self:center}
+.sn{--k:clamp(0,calc((var(--sc-p) - var(--s))/.1),1);position:relative;display:flex;align-items:center;gap:14px;background:#fff;padding:12px 14px;border-radius:16px;box-shadow:4px 4px 10px rgba(20,20,35,.05);opacity:calc(.4 + var(--k)*.6);translate:0 calc((1 - var(--k))*10px)}
+.sn+.sn{margin-top:16px}
+.sn+.sn::before{content:"";position:absolute;left:34px;top:-17px;width:3px;height:17px;border-radius:3px;background:linear-gradient(var(--accent-purple),var(--accent-blue)) top/100% calc(var(--k)*100%) no-repeat,rgba(20,20,35,.1)}
+.sn::after{content:"";position:absolute;inset:0;border-radius:16px;box-shadow:0 0 0 2px var(--accent-blue);opacity:calc(var(--k)*.5);pointer-events:none}
+.sn b{display:block;font-size:.95rem}.sn span{display:block;font-size:.8rem;color:var(--text-secondary)}
+.sn em{margin-left:auto;font-style:normal;font-size:.7rem;font-weight:700;color:var(--accent-blue);background:#EEF2FF;border-radius:20px;padding:4px 10px;white-space:nowrap}
+.booked{margin-top:18px;text-align:center;font-weight:700;color:#16A34A;background:#DCFCE7;border-radius:16px;padding:12px;opacity:clamp(0,calc((var(--sc-p) - .84)*12),1);scale:calc(.92 + clamp(0,calc((var(--sc-p) - .84)*12),1)*.08)}
 
-  /* workflow card, used in the hero and each automation */
-  .wf { background: var(--sc-surface); border: 1px solid var(--sc-hairline); border-radius: 18px; box-shadow: var(--shadow); padding: 1rem 1rem 1.1rem; }
-  .wf-bar { display: flex; align-items: center; gap: .4rem; font-family: var(--sc-font-mono); font-size: .72rem; color: var(--sc-ink-soft); padding: .1rem .3rem .9rem; }
-  .wf-bar s { width: 9px; height: 9px; border-radius: 50%; background: var(--sc-hairline-strong); text-decoration: none; }
-  .wf-bar span { margin-left: .5rem; }
-  .n { position: relative; display: flex; align-items: center; gap: .85rem; padding: .8rem .9rem; border: 1px solid var(--sc-hairline); border-radius: 12px; background: var(--sc-surface); }
-  .n + .n { margin-top: 16px; }
-  .n + .n::before { content: ""; position: absolute; left: 1.55rem; top: -17px; width: 2px; height: 16px; background: var(--sc-hairline-strong); }
-  .ic { flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-family: var(--sc-font-mono); font-size: .68rem; font-weight: 500; font-style: normal; background: color-mix(in oklab, var(--sc-accent) 10%, white); color: var(--sc-accent); }
-  .n b { display: block; font-weight: 500; font-size: var(--sc-t-sm); }
-  .n span { display: block; font-size: var(--sc-t-xs); color: var(--sc-ink-soft); margin-top: 2px; }
-  .n em { margin-left: auto; font-style: normal; font-family: var(--sc-font-mono); font-size: .66rem; color: var(--sc-ink-soft); border: 1px solid var(--sc-hairline); border-radius: 99px; padding: .15rem .55rem; white-space: nowrap; }
-  .n.end { border-color: color-mix(in oklab, var(--sc-accent) 45%, white); background: color-mix(in oklab, var(--sc-accent) 5%, white); }
-  .live .n { animation: lit 7s infinite; }
-  .live .n:nth-child(3) { animation-delay: .9s; } .live .n:nth-child(4) { animation-delay: 1.8s; } .live .n:nth-child(5) { animation-delay: 2.7s; } .live .n:nth-child(6) { animation-delay: 3.6s; }
-  @keyframes lit { 0%,4% { border-color: var(--sc-hairline); } 9%,30% { border-color: var(--sc-accent); box-shadow: 0 0 0 4px color-mix(in oklab, var(--sc-accent) 12%, transparent); } 45%,100% { border-color: var(--sc-hairline); box-shadow: none; } }
+.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(200px,auto);gap:24px}
+.bento-item{background:var(--card-bg);padding:32px;border-radius:24px;box-shadow:var(--clay-shadow-sm);display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s;overflow:hidden;position:relative}
+.bento-item:hover{transform:translateY(-5px);box-shadow:var(--clay-shadow-lg)}
+.bento-large{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#4F46E5,#9333EA);color:#fff}
+.bento-large p{color:rgba(255,255,255,.8);position:relative;z-index:2}.bento-large h3{position:relative;z-index:2}
+.hub-container{position:absolute;inset:34% 0 0 0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.hub-center{width:70px;height:70px;background:#fff;border-radius:20px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent-purple);box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:3}
+.hub-node{position:absolute;padding:10px 16px 10px 12px;background:rgba(255,255,255,.96);border-radius:14px;font-size:.82rem;font-weight:700;color:var(--text-primary);display:flex;align-items:center;gap:8px;box-shadow:0 5px 15px rgba(0,0,0,.12);z-index:2;animation:bob 5s ease-in-out infinite}
+.hub-node .lg{width:20px;height:20px}
+.node-1{top:6%;left:8%}.node-2{top:6%;right:8%;animation-delay:1s}.node-3{bottom:8%;left:14%;animation-delay:2s}.node-4{bottom:8%;right:14%;animation-delay:3s}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -7px}}
+.hub-svg{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.hub-line{stroke:rgba(255,255,255,.4);stroke-width:2;stroke-dasharray:6;animation:dash 1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-12}}
+.bento-wide{grid-column:span 2}
+.bento-item h3{font-size:1.3rem;margin-bottom:10px;font-weight:700;position:relative;z-index:2}.bento-item p{color:var(--text-secondary);font-size:.95rem;position:relative;z-index:2}
+.chart-3d-container{flex:1;display:flex;align-items:flex-end;justify-content:center;padding-top:20px;perspective:1000px;margin-top:20px}
+.chart-3d{transform:rotateX(50deg) rotateZ(45deg);transform-style:preserve-3d;display:flex;gap:12px}
+.bar-3d{width:24px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));border-radius:4px;box-shadow:2px 2px 10px rgba(20,20,35,.1);position:relative;transform-origin:bottom;animation:growBar 1.5s ease-out forwards;transform:scaleY(0)}
+.bar-3d::after{content:'';position:absolute;top:0;left:0;width:100%;height:10px;background:#C4B5FD;transform:rotateX(90deg);transform-origin:top;border-radius:4px}
+@keyframes growBar{to{transform:scaleY(1)}}
 
-  /* before / after (pinned, driven by --sc-p) */
-  .ba { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.1rem; padding: 4.5rem var(--sc-gutter) 1.5rem; background: var(--sc-canvas); }
-  .ba h2 { text-align: center; max-width: 18ch; }
-  .tag { position: relative; height: 1.5rem; width: 100%; text-align: center; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: .08em; text-transform: uppercase; }
-  .tag span { position: absolute; inset: 0; }
-  .t1 { color: var(--sc-ink-soft); opacity: clamp(0, calc((.55 - var(--sc-p)) * 8), 1); }
-  .t2 { color: var(--sc-accent); opacity: clamp(0, calc((var(--sc-p) - .45) * 8), 1); }
-  .rows { width: min(40rem, 100%); }
-  .row { --k: clamp(0, calc((var(--sc-p) - var(--s)) / .14), 1); position: relative; display: grid; min-height: 62px; background: var(--sc-surface); border: 1px solid var(--sc-hairline); border-radius: 12px; box-shadow: var(--shadow); }
-  .row + .row { margin-top: 14px; }
-  .row + .row::before { content: ""; position: absolute; left: 1.7rem; top: -15px; width: 2px; height: 14px; background: linear-gradient(var(--sc-accent), var(--sc-accent)) top / 100% calc(var(--k) * 100%) no-repeat, var(--sc-hairline-strong); }
-  .row::after { content: ""; position: absolute; inset: -1px; border: 1.5px solid var(--sc-accent); border-radius: 12px; opacity: var(--k); pointer-events: none; }
-  .man, .auto { grid-area: 1 / 1; display: flex; align-items: center; gap: .85rem; padding: .7rem .9rem; font-size: var(--sc-t-sm); }
-  .man { opacity: calc(1 - var(--k) * 1.8); translate: 0 calc(var(--k) * -8px); color: var(--sc-ink-soft); }
-  .man .ic { background: color-mix(in oklab, var(--sc-ink) 6%, white); color: var(--sc-ink-soft); }
-  .auto { opacity: calc(var(--k) * 1.8 - .8); translate: 0 calc((1 - var(--k)) * 8px); }
-  .auto b { font-weight: 500; }
-  .man em, .auto em { margin-left: auto; font-style: normal; font-family: var(--sc-font-mono); font-size: .68rem; white-space: nowrap; padding: .15rem .55rem; border-radius: 99px; border: 1px solid var(--sc-hairline); }
-  .auto em { color: var(--sc-accent); border-color: color-mix(in oklab, var(--sc-accent) 40%, white); }
-  .done { margin: .3rem 0 0; text-align: center; font-family: var(--sc-font-display); font-size: var(--sc-t-xl); letter-spacing: -.02em; opacity: clamp(0, calc((var(--sc-p) - .88) * 12), 1); }
+/* examples (replaces testimonials) */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px}
+.testimonial-card{background:rgba(241,243,249,.6);backdrop-filter:blur(10px);border:1px solid var(--glass-border);padding:32px;border-radius:24px;box-shadow:var(--clay-shadow-sm);position:relative;transition:transform .3s}
+.testimonial-card:hover{transform:translateY(-5px);box-shadow:var(--clay-shadow-lg)}
+.chain{display:flex;align-items:center;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.chain i{font-style:normal;color:var(--accent-purple);font-weight:800;opacity:.7}
+.testimonial-card h3{font-size:1.25rem;margin-bottom:8px;font-weight:700}.testimonial-card p{color:var(--text-secondary);font-size:.98rem}
+.testimonial-card .out{display:inline-block;margin-top:16px;font-size:.8rem;font-weight:700;color:#16A34A;background:#DCFCE7;border-radius:20px;padding:5px 12px}
 
-  /* automations */
-  .sec { padding-block: var(--sc-9); }
-  .head { max-width: 40rem; margin-bottom: var(--sc-7); }
-  .feat { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
-  .feat + .feat { margin-top: var(--sc-9); }
-  .feat:nth-of-type(even) .copy { order: 2; }
-  .feat h3 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-2xl); line-height: 1; letter-spacing: -.03em; margin: 0 0 var(--sc-4); text-wrap: balance; }
-  .feat ul { list-style: none; padding: 0; margin: var(--sc-5) 0 0; display: grid; gap: .6rem; font-size: var(--sc-t-sm); }
-  .feat li { display: flex; gap: .6rem; }
-  .feat li::before { content: ""; flex: none; width: 16px; height: 16px; margin-top: 3px; border-radius: 50%; background: color-mix(in oklab, var(--sc-accent) 14%, white) url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.5 8.3l2.2 2.2 4.8-4.8' fill='none' stroke='%234f46e5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>"); }
-  .stack { margin-top: var(--sc-5); font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); }
-
-  /* how it works + close */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sc-5); }
-  .step { background: var(--sc-surface); border: 1px solid var(--sc-hairline); border-radius: 16px; padding: var(--sc-5); box-shadow: var(--shadow); }
-  .step b { display: block; font-family: var(--sc-font-display); font-size: var(--sc-t-lg); font-weight: 600; letter-spacing: -.02em; margin: .7rem 0 .4rem; }
-  .step p { margin: 0; color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
-  .step .ic { font-size: .75rem; }
-  .close { margin-block: var(--sc-9) var(--sc-7); padding: clamp(2.2rem, 6vw, 4.5rem); border-radius: 24px; background: var(--sc-ink); color: #fff; text-align: center; }
-  .close .sc-body { color: #aab0c4; margin: var(--sc-4) auto 0; }
-  .close .cta { margin-top: var(--sc-6); background: #fff; color: var(--sc-ink); box-shadow: none; }
-  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; padding-bottom: var(--sc-7); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); }
-  .foot a { color: inherit; }
-
-  @media (max-width: 860px) {
-    .links { display: none; } .nav .cta { margin-left: auto; }
-    .split, .feat, .steps { grid-template-columns: 1fr; }
-    .feat:nth-of-type(even) .copy { order: 0; }
-    .sec { padding-block: var(--sc-9); }
-    .man, .auto { padding: .55rem .7rem; gap: .65rem; font-size: .82rem; }
-    .row { min-height: 56px; } .ba { gap: .8rem; padding-top: 4.2rem; }
-    .man em, .auto em { display: none; }
-  }
-  @media (prefers-reduced-motion: reduce) { .live .n { animation: none; } html { scroll-behavior: auto; } }
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;perspective:1000px}
+.process-card{background:rgba(241,243,249,.5);backdrop-filter:blur(10px);border:1px solid var(--glass-border);padding:32px;border-radius:24px;position:relative;box-shadow:var(--clay-shadow-sm);transform:rotateY(-5deg) rotateX(2deg);transition:transform .4s ease,box-shadow .4s ease}
+.process-card:hover{transform:rotateY(0) rotateX(0) translateY(-10px);box-shadow:var(--clay-shadow-lg)}
+.step-number{position:absolute;top:-20px;right:20px;font-size:5rem;font-weight:800;color:rgba(79,70,229,.1);line-height:1}
+.process-card h3{margin-bottom:12px;color:var(--accent-blue)}
+.cta-container{background:linear-gradient(135deg,rgba(79,70,229,.08),rgba(147,51,234,.08));border:1px solid var(--glass-border);padding:80px 40px;border-radius:40px;text-align:center;box-shadow:var(--clay-shadow-lg);position:relative;overflow:hidden}
+.cta-container h2{font-size:3rem;margin-bottom:20px;font-weight:800;letter-spacing:-.02em}.cta-container p{font-size:1.2rem;color:var(--text-secondary);margin-bottom:40px}
+footer{padding:40px 0;text-align:center;color:var(--text-secondary);font-size:.9rem}
+/* chapter dots */
+.dots{position:fixed;right:18px;top:50%;translate:0 -50%;z-index:900;display:flex;flex-direction:column;gap:14px}
+.dots a{width:10px;height:10px;border-radius:50%;background:rgba(20,20,35,.18);box-shadow:inset 1px 1px 2px rgba(0,0,0,.1);transition:transform .3s,background .3s}
+.dots a.on{background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));transform:scale(1.5)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}.reveal.active{opacity:1;transform:translateY(0)}
+.process-card.reveal{transform:translateY(40px) rotateY(-5deg) rotateX(2deg)}.process-card.reveal.active{transform:translateY(0) rotateY(-5deg) rotateX(2deg)}.process-card.reveal.active:hover{transform:rotateY(0) rotateX(0) translateY(-10px)}
+@media(max-width:968px){.hero{flex-direction:column;text-align:center;padding-top:140px}.hero-content{max-width:100%;margin-bottom:60px}.cta-group{justify-content:center}.hero-visual{transform:scale(.8)!important;margin-bottom:40px;pointer-events:none}.hero h1{font-size:3rem}.bento-grid{grid-template-columns:repeat(2,1fr)}.bento-large,.bento-wide{grid-column:span 2}.story{grid-template-columns:1fr;gap:1rem;padding-top:84px}.caps{height:150px}.cap h3{font-size:1.25rem}.cap p{font-size:.95rem}.dots{display:none}}
+@media(max-width:640px){nav{padding:10px 14px 10px 16px;top:12px;width:calc(100% - 24px)}.logo{font-size:1.15rem}.logo-icon{width:30px;height:30px}.btn-nav{padding:10px 16px;font-size:.82rem}.story{padding-top:78px;gap:.6rem}.story .section-tag,.cap p{display:none}.story h2{font-size:1.45rem;margin-bottom:12px}.cap h3{font-size:1.1rem}.caps{height:66px}.story{align-items:start}.sn .lt{width:36px;height:36px;border-radius:11px}.booked{margin-top:12px;padding:8px}.story-card .card-header{margin-bottom:12px!important}.bento-large{min-height:470px}.hub-container{inset:46% 0 0 0}.nav-links{display:none}.hero h1{font-size:2.5rem}.section-header h2{font-size:2rem}.cta-container h2{font-size:2rem}.cta-group{flex-direction:column}.bento-grid{grid-template-columns:1fr}.bento-large,.bento-wide{grid-column:span 1}.stats-bar{flex-direction:column;gap:30px}.hero-visual{display:none}.chart-3d-container{transform:scale(.7);margin:-20px 0}.story-card{padding:16px}.sn{padding:6px 10px}.sn span,.sn em{display:none}.sn+.sn{margin-top:13px}.sn+.sn::before{top:-14px;height:14px}.caps{height:170px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <span data-sc-progress></span>
-
-<nav class="nav">
-  <a class="mark" href="#top"><i><svg viewBox="0 0 16 16"><path d="M3 4h6a2.5 2.5 0 010 5H6m0 0h4a2.5 2.5 0 010 5H3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></i>Syncloop AI</a>
-  <div class="links"><a href="#automations">Automations</a><a href="#how">How it works</a></div>
-  <a class="cta" href="mailto:kenil@syncloopai.com?subject=Book%20a%20call">Book a call</a>
+<div class="bg-shape shape-1" aria-hidden="true"></div><div class="bg-shape shape-2" aria-hidden="true"></div>
+<nav>
+ <a href="#" class="logo"><div class="logo-icon" aria-hidden="true">⏣</div>SyncLoop<span style="color:var(--accent-blue)">AI</span></a>
+ <div class="nav-links"><a href="#services">Services</a><a href="#story">Live demo</a><a href="#examples">Examples</a><a href="#process">Process</a></div>
+ <a href="#contact" class="btn-nav">Book a Call</a>
 </nav>
+<div class="dots" id="dots" aria-hidden="true"></div>
 
-<main id="top">
+<main>
+<header class="hero container">
+ <div class="hero-content">
+  <div class="hero-badge"><span style="width:8px;height:8px;background:var(--accent-purple);display:inline-block;border-radius:50px"></span>Next-Gen AI Automations</div>
+  <h1>Automate the Grind. <br><span class="gradient-text">Amplify Your Growth.</span></h1>
+  <p>SyncLoop AI builds custom AI automation systems that eliminate repetitive tasks, streamline your workflows, and scale your business on autopilot.</p>
+  <div class="cta-group"><a href="#contact" class="btn-primary">Book a Free Strategy Call</a><a href="#story" class="btn-secondary">See How It Works</a></div>
+ </div>
+ <div class="hero-visual" id="heroVisual" aria-hidden="true">
+  <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+  <div class="visual-card-main">
+   <div class="card-header"><span class="card-title">Workflow Engine</span><span class="card-status">● Active</span></div>
+   <div>
+    <div class="automation-step"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="n8n" role="img"><path fill="#EA4B71" d="M21.474 5.684a2.53 2.53 0 0 0-2.447 1.895H16.13a2.526 2.526 0 0 0-2.492 2.11l-.103.624a1.26 1.26 0 0 1-1.246 1.055h-1.001a2.527 2.527 0 0 0-4.893 0H4.973a2.527 2.527 0 1 0 0 1.264h1.422a2.527 2.527 0 0 0 4.894 0h1a1.26 1.26 0 0 1 1.247 1.055l.103.623a2.526 2.526 0 0 0 2.492 2.111h.37a2.527 2.527 0 1 0 0-1.263h-.37a1.26 1.26 0 0 1-1.246-1.056l-.103-.623A2.52 2.52 0 0 0 13.96 12a2.52 2.52 0 0 0 .82-1.48l.104-.622a1.26 1.26 0 0 1 1.246-1.056h2.896a2.527 2.527 0 1 0 2.447-3.158m0 1.263a1.263 1.263 0 0 1 1.263 1.263 1.263 1.263 0 0 1-1.263 1.264A1.263 1.263 0 0 1 20.21 8.21a1.263 1.263 0 0 1 1.264-1.263m-18.948 3.79A1.263 1.263 0 0 1 3.79 12a1.263 1.263 0 0 1-1.264 1.263A1.263 1.263 0 0 1 1.263 12a1.263 1.263 0 0 1 1.263-1.263m6.316 0A1.263 1.263 0 0 1 10.105 12a1.263 1.263 0 0 1-1.263 1.263A1.263 1.263 0 0 1 7.58 12a1.263 1.263 0 0 1 1.263-1.263m10.106 3.79a1.263 1.263 0 0 1 1.263 1.263 1.263 1.263 0 0 1-1.263 1.263 1.263 1.263 0 0 1-1.264-1.263 1.263 1.263 0 0 1 1.263-1.264"/></svg></div><div class="step-text"><h4>New Lead Captured</h4><p>Workflow triggered</p></div></div>
+    <div class="automation-step"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="claude" role="img"><path fill="#D97757" d="m4.714 15.956 4.718-2.648.079-.23-.08-.128h-.23l-.79-.048-2.695-.073-2.337-.097-2.265-.122-.57-.121-.535-.704.055-.353.48-.321.685.06 1.518.104 2.277.157 1.651.098 2.447.255h.389l.054-.158-.133-.097-.103-.098-2.356-1.596-2.55-1.688-1.336-.972-.722-.491L2 6.223l-.158-1.008.656-.722.88.06.224.061.893.686 1.906 1.476 2.49 1.833.364.304.146-.104.018-.072-.164-.274-1.354-2.446-1.445-2.49-.644-1.032-.17-.619a3 3 0 0 1-.103-.729L6.287.133 6.7 0l.995.134.42.364.619 1.415L9.735 4.14l1.555 3.03.455.898.243.832.09.255h.159V9.01l.127-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.583.28.48.685-.067.444-.286 1.851-.558 2.903-.365 1.942h.213l.243-.242.983-1.306 1.652-2.064.728-.82.85-.904.547-.431h1.032l.759 1.129-.34 1.166-1.063 1.347-.88 1.142-1.263 1.7-.79 1.36.074.11.188-.02 2.853-.606 1.542-.28 1.84-.315.832.388.09.395-.327.807-1.967.486-2.307.462-3.436.813-.043.03.049.061 1.548.146.662.036h1.62l3.018.225.79.522.473.638-.08.485-1.213.62-1.64-.389-3.825-.91-1.31-.329h-.183v.11l1.093 1.068 2.003 1.81 2.508 2.33.127.578-.321.455-.34-.049-2.204-1.657-.85-.747-1.925-1.62h-.127v.17l.443.649 2.343 3.521.122 1.08-.17.353-.607.213-.668-.122-1.372-1.924-1.415-2.168-1.141-1.943-.14.08-.674 7.254-.316.37-.728.28-.607-.461-.322-.747.322-1.476.388-1.924.316-1.53.285-1.9.17-.632-.012-.042-.14.018-1.432 1.967-2.18 2.945-1.724 1.845-.413.164-.716-.37.066-.662.401-.589 2.386-3.036 1.439-1.882.929-1.086-.006-.158h-.055L4.138 18.56l-1.13.146-.485-.456.06-.746.231-.243 1.907-1.312Z"/></svg></div><div class="step-text"><h4>AI Qualifies Lead</h4><p>Claude analysis…</p></div></div>
+    <div class="automation-step"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="hubspot" role="img"><path fill="#FF7A59" d="M18.164 7.93V5.084a2.2 2.2 0 0 0 1.267-1.978v-.067A2.2 2.2 0 0 0 17.238.845h-.067a2.2 2.2 0 0 0-2.193 2.193v.067a2.2 2.2 0 0 0 1.252 1.973l.013.006v2.852a6.2 6.2 0 0 0-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 1 0 4.3 4.656l-.012.006 7.697 5.991a6.18 6.18 0 0 0-1.038 3.446 6.2 6.2 0 0 0 1.147 3.607l-.013-.02-2.342 2.343a2 2 0 0 0-.58-.095h-.002a2.033 2.033 0 1 0 2.033 2.033 2 2 0 0 0-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 1 0 4.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 1 1 3.215-3.207v.002a3.206 3.206 0 0 1-3.207 3.207z"/></svg></div><div class="step-text"><h4>CRM Updated &amp; Email Sent</h4><p>Sync complete</p></div></div>
+   </div>
+   <div style="height:8px;background:#E2E8F0;border-radius:10px;overflow:hidden"><div style="width:80%;height:100%;background:linear-gradient(90deg,var(--accent-blue),var(--accent-purple));border-radius:10px"></div></div>
+  </div>
+ </div>
+</header>
 
-  <section class="hero" data-sc-act="flow">
-    <div class="sc-wrap split">
-      <div data-sc-in data-sc-stagger="80">
-        <p class="eyebrow">Automation for marketing and front-desk teams</p>
-        <h1 class="sc-display sc-display--xl" style="font-size: clamp(2.8rem, 1.6rem + 5vw, 5.4rem)">Stop doing by hand what a workflow can do.</h1>
-        <p class="sc-body">We build custom automations with n8n and Claude: calls answered, leads followed up, reports written. No manual steps left.</p>
-        <div class="btns"><a class="cta" href="mailto:kenil@syncloopai.com?subject=Book%20a%20call">Book a call</a><a class="cta ghost" href="#automations">See what we build</a></div>
-      </div>
-      <div class="wf live" data-sc-in data-sc-reveal="up" aria-label="Example workflow: new enquiry to CRM and reply">
-        <div class="wf-bar"><s></s><s></s><s></s><span>workflow · new-lead-follow-up</span></div>
-        <div class="n"><i class="ic">IN</i><div><b>New enquiry arrives</b><span>Website form, Meta ad or WhatsApp</span></div><em>Trigger</em></div>
-        <div class="n"><i class="ic">AI</i><div><b>Claude reads and scores it</b><span>Intent, budget, urgency</span></div><em>Claude</em></div>
-        <div class="n"><i class="ic">CRM</i><div><b>Contact added to your CRM</b><span>Fields and notes filled in</span></div><em>n8n</em></div>
-        <div class="n end"><i class="ic">OUT</i><div><b>Personal reply sent</b><span>Email and WhatsApp, in under a minute</span></div><em>Done</em></div>
-      </div>
-    </div>
-  </section>
+<section style="padding-top:0"><div class="container reveal"><div class="stats-bar">
+ <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Calls and chats answered by AI</div></div>
+ <div class="stat-item"><div class="stat-num">&lt;1 min</div><div class="stat-label">Target time to first lead reply</div></div>
+ <div class="stat-item"><div class="stat-num"><span data-sc-count="0 400">400</span>+</div><div class="stat-label">Apps n8n can connect to</div></div>
+ <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Manual steps left in a finished flow</div></div>
+</div></div></section>
 
-  <section id="before-after" data-sc-act="pin" data-sc-span="3.2">
-    <div data-sc-stage class="ba">
-      <div class="tag"><span class="t1">Before · done by hand</span><span class="t2">After · runs itself</span></div>
-      <h2 class="sc-display sc-display--md">Five manual steps. One automated flow.</h2>
-      <div class="rows">
-        <div class="row" style="--s:.08"><div class="man"><i class="ic">01</i>Check inbox and forms for new enquiries<em>20 min / day</em></div><div class="auto"><i class="ic">IN</i><b>Every enquiry caught the second it arrives</b><em>Instant</em></div></div>
-        <div class="row" style="--s:.24"><div class="man"><i class="ic">02</i>Copy details into the CRM by hand<em>10 min / day</em></div><div class="auto"><i class="ic">CRM</i><b>Contact created in your CRM, fields filled</b><em>Auto</em></div></div>
-        <div class="row" style="--s:.40"><div class="man"><i class="ic">03</i>Write and send each follow-up email<em>15 min / day</em></div><div class="auto"><i class="ic">AI</i><b>Claude drafts a personal reply and sends it</b><em>Auto</em></div></div>
-        <div class="row" style="--s:.56"><div class="man"><i class="ic">04</i>Answer calls and note down bookings<em>All day</em></div><div class="auto"><i class="ic">CAL</i><b>AI receptionist books it in your calendar</b><em>24/7</em></div></div>
-        <div class="row" style="--s:.72"><div class="man"><i class="ic">05</i>Pull numbers into a Monday report<em>2 hrs / week</em></div><div class="auto"><i class="ic">RPT</i><b>Weekly report lands in your inbox</b><em>Weekly</em></div></div>
-      </div>
-      <p class="done">Same work. Zero manual steps.</p>
-    </div>
-  </section>
+<section id="services"><div class="container">
+ <div class="section-header reveal"><span class="section-tag">Core Services</span><h2>Enter the Loop. <span class="gradient-text">Enter SyncLoop AI.</span></h2><p>We don’t just give you a ChatGPT prompt. We build end-to-end AI automation systems integrated directly into your tools.</p></div>
+ <div class="services-grid">
+  <div class="service-card reveal"><div class="icon-3d bg-blue"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>AI Chatbots &amp; Voice Agents</h3><p>24/7 AI agents trained on your business to answer calls and chats, qualify leads and book appointments instantly.</p></div>
+  <div class="service-card reveal"><div class="icon-3d bg-purple"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8L7 17M17 7l2.8-2.8"/></svg></div><h3>Workflow Automation</h3><p>We connect your CRM, email, and internal tools. When an action happens in one place, AI automatically handles the rest.</p></div>
+  <div class="service-card reveal"><div class="icon-3d bg-pink"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>AI Data Processing</h3><p>Automate document reading, data extraction, and weekly report generation. Turn hours of manual work into seconds.</p></div>
+ </div>
+</div></section>
 
-  <section id="automations" class="sec" data-sc-act="flow">
-    <div class="sc-wrap">
-      <div class="head" data-sc-in><p class="eyebrow">What we build</p><h2 class="sc-display sc-display--lg">Three automations that pay for themselves.</h2></div>
+<section id="story" data-sc-act="pin" data-sc-span="4">
+ <div data-sc-stage class="story">
+  <div>
+   <span class="section-tag">Watch it run</span>
+   <h2>From new lead to booked call, with no one lifting a finger.</h2>
+   <div class="caps">
+    <div class="cap cap1"><small>01 · It arrives</small><h3>A lead lands in your inbox.</h3><p>A form, an email or a call. SyncLoop catches it the second it arrives, so nothing sits waiting.</p></div>
+    <div class="cap cap2"><small>02 · AI decides</small><h3>Claude reads it and qualifies it.</h3><p>Intent, budget, urgency. The same judgement your team would apply, without the queue.</p></div>
+    <div class="cap cap3"><small>03 · Your team acts</small><h3>CRM updated. Reply sent. Team pinged.</h3><p>The contact lands in HubSpot, the lead gets a personal reply, and hot ones reach your team on Slack.</p></div>
+   </div>
+  </div>
+  <div class="story-card" aria-label="Example automation: lead to booking">
+   <div class="card-header" style="margin-bottom:18px"><span class="card-title">Lead → Booking</span><span class="card-status">● Running</span></div>
+   <div class="sn" style="--s:.04"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="gmail" role="img"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg></div><div><b>Enquiry arrives</b><span>Email or website form</span></div><em>Trigger</em></div>
+   <div class="sn" style="--s:.18"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="n8n" role="img"><path fill="#EA4B71" d="M21.474 5.684a2.53 2.53 0 0 0-2.447 1.895H16.13a2.526 2.526 0 0 0-2.492 2.11l-.103.624a1.26 1.26 0 0 1-1.246 1.055h-1.001a2.527 2.527 0 0 0-4.893 0H4.973a2.527 2.527 0 1 0 0 1.264h1.422a2.527 2.527 0 0 0 4.894 0h1a1.26 1.26 0 0 1 1.247 1.055l.103.623a2.526 2.526 0 0 0 2.492 2.111h.37a2.527 2.527 0 1 0 0-1.263h-.37a1.26 1.26 0 0 1-1.246-1.056l-.103-.623A2.52 2.52 0 0 0 13.96 12a2.52 2.52 0 0 0 .82-1.48l.104-.622a1.26 1.26 0 0 1 1.246-1.056h2.896a2.527 2.527 0 1 0 2.447-3.158m0 1.263a1.263 1.263 0 0 1 1.263 1.263 1.263 1.263 0 0 1-1.263 1.264A1.263 1.263 0 0 1 20.21 8.21a1.263 1.263 0 0 1 1.264-1.263m-18.948 3.79A1.263 1.263 0 0 1 3.79 12a1.263 1.263 0 0 1-1.264 1.263A1.263 1.263 0 0 1 1.263 12a1.263 1.263 0 0 1 1.263-1.263m6.316 0A1.263 1.263 0 0 1 10.105 12a1.263 1.263 0 0 1-1.263 1.263A1.263 1.263 0 0 1 7.58 12a1.263 1.263 0 0 1 1.263-1.263m10.106 3.79a1.263 1.263 0 0 1 1.263 1.263 1.263 1.263 0 0 1-1.263 1.263 1.263 1.263 0 0 1-1.264-1.263 1.263 1.263 0 0 1 1.263-1.264"/></svg></div><div><b>Workflow starts</b><span>Details captured and cleaned</span></div><em>n8n</em></div>
+   <div class="sn" style="--s:.34"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="claude" role="img"><path fill="#D97757" d="m4.714 15.956 4.718-2.648.079-.23-.08-.128h-.23l-.79-.048-2.695-.073-2.337-.097-2.265-.122-.57-.121-.535-.704.055-.353.48-.321.685.06 1.518.104 2.277.157 1.651.098 2.447.255h.389l.054-.158-.133-.097-.103-.098-2.356-1.596-2.55-1.688-1.336-.972-.722-.491L2 6.223l-.158-1.008.656-.722.88.06.224.061.893.686 1.906 1.476 2.49 1.833.364.304.146-.104.018-.072-.164-.274-1.354-2.446-1.445-2.49-.644-1.032-.17-.619a3 3 0 0 1-.103-.729L6.287.133 6.7 0l.995.134.42.364.619 1.415L9.735 4.14l1.555 3.03.455.898.243.832.09.255h.159V9.01l.127-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.583.28.48.685-.067.444-.286 1.851-.558 2.903-.365 1.942h.213l.243-.242.983-1.306 1.652-2.064.728-.82.85-.904.547-.431h1.032l.759 1.129-.34 1.166-1.063 1.347-.88 1.142-1.263 1.7-.79 1.36.074.11.188-.02 2.853-.606 1.542-.28 1.84-.315.832.388.09.395-.327.807-1.967.486-2.307.462-3.436.813-.043.03.049.061 1.548.146.662.036h1.62l3.018.225.79.522.473.638-.08.485-1.213.62-1.64-.389-3.825-.91-1.31-.329h-.183v.11l1.093 1.068 2.003 1.81 2.508 2.33.127.578-.321.455-.34-.049-2.204-1.657-.85-.747-1.925-1.62h-.127v.17l.443.649 2.343 3.521.122 1.08-.17.353-.607.213-.668-.122-1.372-1.924-1.415-2.168-1.141-1.943-.14.08-.674 7.254-.316.37-.728.28-.607-.461-.322-.747.322-1.476.388-1.924.316-1.53.285-1.9.17-.632-.012-.042-.14.018-1.432 1.967-2.18 2.945-1.724 1.845-.413.164-.716-.37.066-.662.401-.589 2.386-3.036 1.439-1.882.929-1.086-.006-.158h-.055L4.138 18.56l-1.13.146-.485-.456.06-.746.231-.243 1.907-1.312Z"/></svg></div><div><b>Lead qualified</b><span>Scored hot, warm or cold</span></div><em>Claude</em></div>
+   <div class="sn" style="--s:.50"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="hubspot" role="img"><path fill="#FF7A59" d="M18.164 7.93V5.084a2.2 2.2 0 0 0 1.267-1.978v-.067A2.2 2.2 0 0 0 17.238.845h-.067a2.2 2.2 0 0 0-2.193 2.193v.067a2.2 2.2 0 0 0 1.252 1.973l.013.006v2.852a6.2 6.2 0 0 0-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 1 0 4.3 4.656l-.012.006 7.697 5.991a6.18 6.18 0 0 0-1.038 3.446 6.2 6.2 0 0 0 1.147 3.607l-.013-.02-2.342 2.343a2 2 0 0 0-.58-.095h-.002a2.033 2.033 0 1 0 2.033 2.033 2 2 0 0 0-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 1 0 4.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 1 1 3.215-3.207v.002a3.206 3.206 0 0 1-3.207 3.207z"/></svg></div><div><b>Contact and deal created</b><span>Owner assigned</span></div><em>CRM</em></div>
+   <div class="sn" style="--s:.64"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="gmail" role="img"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg></div><div><b>Personal reply sent</b><span>With a link to book a call</span></div><em>Email</em></div>
+   <div class="sn" style="--s:.78"><div class="lt"><svg class="lg" viewBox="0 0 448 512" aria-label="slack" role="img"><path fill="#4A154B" d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"/></svg></div><div><b>Team notified</b><span>Hot leads pinged instantly</span></div><em>Slack</em></div>
+   <div class="booked">✓ Handled. Zero manual steps.</div>
+  </div>
+ </div>
+</section>
 
-      <div class="feat">
-        <div class="copy" data-sc-in data-sc-stagger="70">
-          <p class="eyebrow">AI voice receptionist</p>
-          <h3>Every call answered. Every booking made.</h3>
-          <p class="sc-body">A natural-sounding AI picks up 24/7, answers common questions, checks your calendar and books the appointment. Your team gets a summary, not a voicemail.</p>
-          <ul><li>No missed calls after hours or at peak times</li><li>Bookings go straight into your calendar</li><li>Confirmation sent by SMS and email</li></ul>
-          <p class="stack">Vapi · Deepgram · ElevenLabs · n8n</p>
-        </div>
-        <div class="wf live" data-sc-in data-sc-reveal="up"><div class="wf-bar"><s></s><s></s><s></s><span>workflow · voice-receptionist</span></div>
-          <div class="n"><i class="ic">IN</i><div><b>Call comes in</b><span>Your clinic or business number</span></div><em>Trigger</em></div>
-          <div class="n"><i class="ic">AI</i><div><b>AI listens and understands</b><span>Speech to intent</span></div><em>Vapi</em></div>
-          <div class="n"><i class="ic">CAL</i><div><b>Checks free slots</b><span>Reads your live calendar</span></div><em>n8n</em></div>
-          <div class="n"><i class="ic">BOOK</i><div><b>Books the appointment</b><span>Name, time and reason saved</span></div><em>n8n</em></div>
-          <div class="n end"><i class="ic">OUT</i><div><b>Confirmation sent</b><span>SMS and email to the caller</span></div><em>Done</em></div></div>
-      </div>
+<section id="features"><div class="container">
+ <div class="section-header reveal"><span class="section-tag">What you get</span><h2>Built for Scale, <span class="gradient-text">Designed for Humans.</span></h2><p>Everything you need to run repetitive work on autopilot, wrapped around the tools you already use.</p></div>
+ <div class="bento-grid reveal">
+  <div class="bento-item bento-large">
+   <div style="z-index:2"><h3>Seamless Integrations</h3><p>Connect your existing stack. SyncLoop AI talks to your CRM, Slack, Notion, email and custom APIs, with no manual copy-pasting.</p></div>
+   <div class="hub-container">
+    <svg class="hub-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line class="hub-line" x1="50%" y1="50%" x2="20%" y2="16%"/><line class="hub-line" x1="50%" y1="50%" x2="80%" y2="16%"/><line class="hub-line" x1="50%" y1="50%" x2="24%" y2="86%"/><line class="hub-line" x1="50%" y1="50%" x2="76%" y2="86%"/></svg>
+    <div class="hub-center">⏣</div>
+    <div class="hub-node node-1"><svg class="lg" viewBox="0 0 448 512" aria-label="slack" role="img"><path fill="#4A154B" d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"/></svg>Slack</div><div class="hub-node node-2"><svg class="lg" viewBox="0 0 24 24" aria-label="hubspot" role="img"><path fill="#FF7A59" d="M18.164 7.93V5.084a2.2 2.2 0 0 0 1.267-1.978v-.067A2.2 2.2 0 0 0 17.238.845h-.067a2.2 2.2 0 0 0-2.193 2.193v.067a2.2 2.2 0 0 0 1.252 1.973l.013.006v2.852a6.2 6.2 0 0 0-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 1 0 4.3 4.656l-.012.006 7.697 5.991a6.18 6.18 0 0 0-1.038 3.446 6.2 6.2 0 0 0 1.147 3.607l-.013-.02-2.342 2.343a2 2 0 0 0-.58-.095h-.002a2.033 2.033 0 1 0 2.033 2.033 2 2 0 0 0-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 1 0 4.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 1 1 3.215-3.207v.002a3.206 3.206 0 0 1-3.207 3.207z"/></svg>HubSpot</div><div class="hub-node node-3"><svg class="lg" viewBox="0 0 24 24" aria-label="notion" role="img"><path fill="#111111" d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632"/></svg>Notion</div><div class="hub-node node-4"><svg class="lg" viewBox="0 0 24 24" aria-label="gmail" role="img"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg>Gmail</div>
+   </div>
+  </div>
+  <div class="bento-item"><h3>Human-in-the-Loop</h3><p>AI does the repetitive work. For critical tasks, it pauses for your team's final approval.</p></div>
+  <div class="bento-item"><h3>You Own It</h3><p>Workflows run in accounts you control, with documentation, so you are never locked in.</p></div>
+  <div class="bento-item bento-wide"><div><h3>Track What It Saves</h3><p>See every automation's runs, time saved and success rate in one place.</p></div>
+   <div class="chart-3d-container"><div class="chart-3d"><div class="bar-3d" style="height:40px"></div><div class="bar-3d" style="height:70px"></div><div class="bar-3d" style="height:50px"></div><div class="bar-3d" style="height:90px"></div><div class="bar-3d" style="height:60px"></div><div class="bar-3d" style="height:80px"></div><div class="bar-3d" style="height:100px"></div></div></div>
+  </div>
+ </div>
+</div></section>
 
-      <div class="feat">
-        <div class="copy" data-sc-in data-sc-stagger="70">
-          <p class="eyebrow">Lead capture to CRM</p>
-          <h3>Every lead followed up within a minute.</h3>
-          <p class="sc-body">Leads from your forms, ads and WhatsApp land in one place, get qualified by Claude, and hear back before a competitor has opened the email.</p>
-          <ul><li>Hot leads flagged and sent to your team on Slack</li><li>Automatic reminders when a lead goes quiet</li><li>A clean CRM with no copy-pasting</li></ul>
-          <p class="stack">n8n · Claude · Google Workspace · your CRM</p>
-        </div>
-        <div class="wf live" data-sc-in data-sc-reveal="up"><div class="wf-bar"><s></s><s></s><s></s><span>workflow · lead-to-crm</span></div>
-          <div class="n"><i class="ic">IN</i><div><b>Lead arrives</b><span>Form, ad or WhatsApp</span></div><em>Trigger</em></div>
-          <div class="n"><i class="ic">AI</i><div><b>Claude qualifies and scores</b><span>Hot, warm or cold</span></div><em>Claude</em></div>
-          <div class="n"><i class="ic">CRM</i><div><b>Saved to your CRM</b><span>Owner and next step assigned</span></div><em>n8n</em></div>
-          <div class="n"><i class="ic">OUT</i><div><b>Instant personal reply</b><span>Then a follow-up if no answer</span></div><em>Gmail</em></div>
-          <div class="n end"><i class="ic">TEAM</i><div><b>Team notified</b><span>Hot leads pinged on Slack</span></div><em>Done</em></div></div>
-      </div>
+<section id="examples"><div class="container">
+ <div class="section-header reveal"><span class="section-tag">Example automations</span><h2>What We Can <span class="gradient-text">Build For You.</span></h2><p>Three typical setups. Each one is custom-built around your tools and your process.</p></div>
+ <div class="testimonials-grid">
+  <div class="testimonial-card reveal"><div class="chain"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="gmail" role="img"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg></div><i>→</i><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="n8n" role="img"><path fill="#EA4B71" d="M21.474 5.684a2.53 2.53 0 0 0-2.447 1.895H16.13a2.526 2.526 0 0 0-2.492 2.11l-.103.624a1.26 1.26 0 0 1-1.246 1.055h-1.001a2.527 2.527 0 0 0-4.893 0H4.973a2.527 2.527 0 1 0 0 1.264h1.422a2.527 2.527 0 0 0 4.894 0h1a1.26 1.26 0 0 1 1.247 1.055l.103.623a2.526 2.526 0 0 0 2.492 2.111h.37a2.527 2.527 0 1 0 0-1.263h-.37a1.26 1.26 0 0 1-1.246-1.056l-.103-.623A2.52 2.52 0 0 0 13.96 12a2.52 2.52 0 0 0 .82-1.48l.104-.622a1.26 1.26 0 0 1 1.246-1.056h2.896a2.527 2.527 0 1 0 2.447-3.158m0 1.263a1.263 1.263 0 0 1 1.263 1.263 1.263 1.263 0 0 1-1.263 1.264A1.263 1.263 0 0 1 20.21 8.21a1.263 1.263 0 0 1 1.264-1.263m-18.948 3.79A1.263 1.263 0 0 1 3.79 12a1.263 1.263 0 0 1-1.264 1.263A1.263 1.263 0 0 1 1.263 12a1.263 1.263 0 0 1 1.263-1.263m6.316 0A1.263 1.263 0 0 1 10.105 12a1.263 1.263 0 0 1-1.263 1.263A1.263 1.263 0 0 1 7.58 12a1.263 1.263 0 0 1 1.263-1.263m10.106 3.79a1.263 1.263 0 0 1 1.263 1.263 1.263 1.263 0 0 1-1.263 1.263 1.263 1.263 0 0 1-1.264-1.263 1.263 1.263 0 0 1 1.263-1.264"/></svg></div><i>→</i><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="claude" role="img"><path fill="#D97757" d="m4.714 15.956 4.718-2.648.079-.23-.08-.128h-.23l-.79-.048-2.695-.073-2.337-.097-2.265-.122-.57-.121-.535-.704.055-.353.48-.321.685.06 1.518.104 2.277.157 1.651.098 2.447.255h.389l.054-.158-.133-.097-.103-.098-2.356-1.596-2.55-1.688-1.336-.972-.722-.491L2 6.223l-.158-1.008.656-.722.88.06.224.061.893.686 1.906 1.476 2.49 1.833.364.304.146-.104.018-.072-.164-.274-1.354-2.446-1.445-2.49-.644-1.032-.17-.619a3 3 0 0 1-.103-.729L6.287.133 6.7 0l.995.134.42.364.619 1.415L9.735 4.14l1.555 3.03.455.898.243.832.09.255h.159V9.01l.127-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.583.28.48.685-.067.444-.286 1.851-.558 2.903-.365 1.942h.213l.243-.242.983-1.306 1.652-2.064.728-.82.85-.904.547-.431h1.032l.759 1.129-.34 1.166-1.063 1.347-.88 1.142-1.263 1.7-.79 1.36.074.11.188-.02 2.853-.606 1.542-.28 1.84-.315.832.388.09.395-.327.807-1.967.486-2.307.462-3.436.813-.043.03.049.061 1.548.146.662.036h1.62l3.018.225.79.522.473.638-.08.485-1.213.62-1.64-.389-3.825-.91-1.31-.329h-.183v.11l1.093 1.068 2.003 1.81 2.508 2.33.127.578-.321.455-.34-.049-2.204-1.657-.85-.747-1.925-1.62h-.127v.17l.443.649 2.343 3.521.122 1.08-.17.353-.607.213-.668-.122-1.372-1.924-1.415-2.168-1.141-1.943-.14.08-.674 7.254-.316.37-.728.28-.607-.461-.322-.747.322-1.476.388-1.924.316-1.53.285-1.9.17-.632-.012-.042-.14.018-1.432 1.967-2.18 2.945-1.724 1.845-.413.164-.716-.37.066-.662.401-.589 2.386-3.036 1.439-1.882.929-1.086-.006-.158h-.055L4.138 18.56l-1.13.146-.485-.456.06-.746.231-.243 1.907-1.312Z"/></svg></div><i>→</i><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="hubspot" role="img"><path fill="#FF7A59" d="M18.164 7.93V5.084a2.2 2.2 0 0 0 1.267-1.978v-.067A2.2 2.2 0 0 0 17.238.845h-.067a2.2 2.2 0 0 0-2.193 2.193v.067a2.2 2.2 0 0 0 1.252 1.973l.013.006v2.852a6.2 6.2 0 0 0-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 1 0 4.3 4.656l-.012.006 7.697 5.991a6.18 6.18 0 0 0-1.038 3.446 6.2 6.2 0 0 0 1.147 3.607l-.013-.02-2.342 2.343a2 2 0 0 0-.58-.095h-.002a2.033 2.033 0 1 0 2.033 2.033 2 2 0 0 0-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 1 0 4.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 1 1 3.215-3.207v.002a3.206 3.206 0 0 1-3.207 3.207z"/></svg></div></div><h3>Lead capture to CRM</h3><p>Every enquiry is caught, qualified by AI, saved to your CRM and answered within minutes.</p><span class="out">Hot leads flagged on Slack</span></div>
+  <div class="testimonial-card reveal"><div class="chain"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="n8n" role="img"><path fill="#EA4B71" d="M21.474 5.684a2.53 2.53 0 0 0-2.447 1.895H16.13a2.526 2.526 0 0 0-2.492 2.11l-.103.624a1.26 1.26 0 0 1-1.246 1.055h-1.001a2.527 2.527 0 0 0-4.893 0H4.973a2.527 2.527 0 1 0 0 1.264h1.422a2.527 2.527 0 0 0 4.894 0h1a1.26 1.26 0 0 1 1.247 1.055l.103.623a2.526 2.526 0 0 0 2.492 2.111h.37a2.527 2.527 0 1 0 0-1.263h-.37a1.26 1.26 0 0 1-1.246-1.056l-.103-.623A2.52 2.52 0 0 0 13.96 12a2.52 2.52 0 0 0 .82-1.48l.104-.622a1.26 1.26 0 0 1 1.246-1.056h2.896a2.527 2.527 0 1 0 2.447-3.158m0 1.263a1.263 1.263 0 0 1 1.263 1.263 1.263 1.263 0 0 1-1.263 1.264A1.263 1.263 0 0 1 20.21 8.21a1.263 1.263 0 0 1 1.264-1.263m-18.948 3.79A1.263 1.263 0 0 1 3.79 12a1.263 1.263 0 0 1-1.264 1.263A1.263 1.263 0 0 1 1.263 12a1.263 1.263 0 0 1 1.263-1.263m6.316 0A1.263 1.263 0 0 1 10.105 12a1.263 1.263 0 0 1-1.263 1.263A1.263 1.263 0 0 1 7.58 12a1.263 1.263 0 0 1 1.263-1.263m10.106 3.79a1.263 1.263 0 0 1 1.263 1.263 1.263 1.263 0 0 1-1.263 1.263 1.263 1.263 0 0 1-1.264-1.263 1.263 1.263 0 0 1 1.263-1.264"/></svg></div><i>→</i><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="claude" role="img"><path fill="#D97757" d="m4.714 15.956 4.718-2.648.079-.23-.08-.128h-.23l-.79-.048-2.695-.073-2.337-.097-2.265-.122-.57-.121-.535-.704.055-.353.48-.321.685.06 1.518.104 2.277.157 1.651.098 2.447.255h.389l.054-.158-.133-.097-.103-.098-2.356-1.596-2.55-1.688-1.336-.972-.722-.491L2 6.223l-.158-1.008.656-.722.88.06.224.061.893.686 1.906 1.476 2.49 1.833.364.304.146-.104.018-.072-.164-.274-1.354-2.446-1.445-2.49-.644-1.032-.17-.619a3 3 0 0 1-.103-.729L6.287.133 6.7 0l.995.134.42.364.619 1.415L9.735 4.14l1.555 3.03.455.898.243.832.09.255h.159V9.01l.127-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.583.28.48.685-.067.444-.286 1.851-.558 2.903-.365 1.942h.213l.243-.242.983-1.306 1.652-2.064.728-.82.85-.904.547-.431h1.032l.759 1.129-.34 1.166-1.063 1.347-.88 1.142-1.263 1.7-.79 1.36.074.11.188-.02 2.853-.606 1.542-.28 1.84-.315.832.388.09.395-.327.807-1.967.486-2.307.462-3.436.813-.043.03.049.061 1.548.146.662.036h1.62l3.018.225.79.522.473.638-.08.485-1.213.62-1.64-.389-3.825-.91-1.31-.329h-.183v.11l1.093 1.068 2.003 1.81 2.508 2.33.127.578-.321.455-.34-.049-2.204-1.657-.85-.747-1.925-1.62h-.127v.17l.443.649 2.343 3.521.122 1.08-.17.353-.607.213-.668-.122-1.372-1.924-1.415-2.168-1.141-1.943-.14.08-.674 7.254-.316.37-.728.28-.607-.461-.322-.747.322-1.476.388-1.924.316-1.53.285-1.9.17-.632-.012-.042-.14.018-1.432 1.967-2.18 2.945-1.724 1.845-.413.164-.716-.37.066-.662.401-.589 2.386-3.036 1.439-1.882.929-1.086-.006-.158h-.055L4.138 18.56l-1.13.146-.485-.456.06-.746.231-.243 1.907-1.312Z"/></svg></div><i>→</i><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="cal" role="img"><path fill="#4285F4" d="M18.316 5.684H24v12.632h-5.684zM5.684 24h12.632v-5.684H5.684zM18.316 5.684V0H1.895A1.894 1.894 0 0 0 0 1.895v16.421h5.684V5.684zm-7.207 6.25v-.065q.407-.216.687-.617c.28-.401.279-.595.279-.982q0-.568-.3-1.025a2.05 2.05 0 0 0-.832-.714 2.7 2.7 0 0 0-1.197-.257q-.9 0-1.481.467-.579.467-.793 1.078l1.085.452q.13-.374.413-.633.284-.258.767-.257.495 0 .816.264a.86.86 0 0 1 .322.703q0 .495-.36.778t-.886.284h-.567v1.085h.633q.611 0 1.02.327.407.327.407.843 0 .505-.387.832c-.387.327-.565.327-.924.327q-.527 0-.897-.311-.372-.312-.521-.881l-1.096.452q.268.923.977 1.401.707.479 1.538.477a2.84 2.84 0 0 0 1.293-.291q.574-.29.902-.794.327-.505.327-1.149 0-.643-.344-1.105a2.07 2.07 0 0 0-.881-.689m2.093-1.931.602.913L15 10.045v5.744h1.187V8.446h-.827zM22.105 0h-3.289v5.184H24V1.895A1.894 1.894 0 0 0 22.105 0m-3.289 23.5 4.684-4.684h-4.684zM0 22.105C0 23.152.848 24 1.895 24h3.289v-5.184H0z"/></svg></div><i>→</i><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="wa" role="img"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52s.198-.298.298-.497c.099-.198.05-.371-.025-.52s-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074s2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413s.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413"/></svg></div></div><h3>AI receptionist</h3><p>Calls and chats are answered 24/7, availability is checked and appointments are booked and confirmed.</p><span class="out">Confirmation sent automatically</span></div>
+  <div class="testimonial-card reveal"><div class="chain"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="sheets" role="img"><path fill="#34A853" d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6zm1.363 10.636h-3.41v1.91h3.41zm0 3.273h-3.41v1.91h3.41zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/></svg></div><i>→</i><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="claude" role="img"><path fill="#D97757" d="m4.714 15.956 4.718-2.648.079-.23-.08-.128h-.23l-.79-.048-2.695-.073-2.337-.097-2.265-.122-.57-.121-.535-.704.055-.353.48-.321.685.06 1.518.104 2.277.157 1.651.098 2.447.255h.389l.054-.158-.133-.097-.103-.098-2.356-1.596-2.55-1.688-1.336-.972-.722-.491L2 6.223l-.158-1.008.656-.722.88.06.224.061.893.686 1.906 1.476 2.49 1.833.364.304.146-.104.018-.072-.164-.274-1.354-2.446-1.445-2.49-.644-1.032-.17-.619a3 3 0 0 1-.103-.729L6.287.133 6.7 0l.995.134.42.364.619 1.415L9.735 4.14l1.555 3.03.455.898.243.832.09.255h.159V9.01l.127-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.583.28.48.685-.067.444-.286 1.851-.558 2.903-.365 1.942h.213l.243-.242.983-1.306 1.652-2.064.728-.82.85-.904.547-.431h1.032l.759 1.129-.34 1.166-1.063 1.347-.88 1.142-1.263 1.7-.79 1.36.074.11.188-.02 2.853-.606 1.542-.28 1.84-.315.832.388.09.395-.327.807-1.967.486-2.307.462-3.436.813-.043.03.049.061 1.548.146.662.036h1.62l3.018.225.79.522.473.638-.08.485-1.213.62-1.64-.389-3.825-.91-1.31-.329h-.183v.11l1.093 1.068 2.003 1.81 2.508 2.33.127.578-.321.455-.34-.049-2.204-1.657-.85-.747-1.925-1.62h-.127v.17l.443.649 2.343 3.521.122 1.08-.17.353-.607.213-.668-.122-1.372-1.924-1.415-2.168-1.141-1.943-.14.08-.674 7.254-.316.37-.728.28-.607-.461-.322-.747.322-1.476.388-1.924.316-1.53.285-1.9.17-.632-.012-.042-.14.018-1.432 1.967-2.18 2.945-1.724 1.845-.413.164-.716-.37.066-.662.401-.589 2.386-3.036 1.439-1.882.929-1.086-.006-.158h-.055L4.138 18.56l-1.13.146-.485-.456.06-.746.231-.243 1.907-1.312Z"/></svg></div><i>→</i><div class="lt"><svg class="lg" viewBox="0 0 448 512" aria-label="slack" role="img"><path fill="#4A154B" d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"/></svg></div><i>→</i><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="gmail" role="img"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg></div></div><h3>Weekly report writer</h3><p>Numbers are pulled from your tools and Claude writes a plain-English summary of what changed.</p><span class="out">In your inbox every Monday</span></div>
+ </div>
+</div></section>
 
-      <div class="feat">
-        <div class="copy" data-sc-in data-sc-stagger="70">
-          <p class="eyebrow">Weekly reports and dashboards</p>
-          <h3>Monday's report, written before you open your laptop.</h3>
-          <p class="sc-body">We connect your ads, analytics and CRM. Claude reads the numbers, writes a plain-English summary and flags what changed and why it matters.</p>
-          <ul><li>One live dashboard instead of four tabs</li><li>A short written summary, not a wall of charts</li><li>Delivered to your inbox every week</li></ul>
-          <p class="stack">n8n · Claude · Google Sheets · Looker Studio</p>
-        </div>
-        <div class="wf live" data-sc-in data-sc-reveal="up"><div class="wf-bar"><s></s><s></s><s></s><span>workflow · weekly-report</span></div>
-          <div class="n"><i class="ic">TIME</i><div><b>Every Monday, 8:00</b><span>Runs on a schedule</span></div><em>Trigger</em></div>
-          <div class="n"><i class="ic">DATA</i><div><b>Pulls the numbers</b><span>Ads, analytics and CRM</span></div><em>n8n</em></div>
-          <div class="n"><i class="ic">AI</i><div><b>Claude writes the summary</b><span>What changed and what to do</span></div><em>Claude</em></div>
-          <div class="n"><i class="ic">SHEET</i><div><b>Dashboard updated</b><span>Sheet and charts refreshed</span></div><em>Sheets</em></div>
-          <div class="n end"><i class="ic">OUT</i><div><b>Report in your inbox</b><span>Ready when you start the day</span></div><em>Done</em></div></div>
-      </div>
-    </div>
-  </section>
+<section id="process"><div class="container">
+ <div class="section-header reveal"><span class="section-tag">How It Works</span><h2>The SyncLoop Process</h2><p>Getting started is simple. We handle the heavy lifting while you watch your business run itself.</p></div>
+ <div class="process-grid">
+  <div class="process-card reveal"><div class="step-number" aria-hidden="true">1</div><h3>Discover</h3><p>We audit your current workflows to find the biggest bottlenecks costing you time and money.</p></div>
+  <div class="process-card reveal"><div class="step-number" aria-hidden="true">2</div><h3>Build</h3><p>We custom-design and train AI agents and automations tailored specifically for your business logic.</p></div>
+  <div class="process-card reveal"><div class="step-number" aria-hidden="true">3</div><h3>Sync</h3><p>We integrate the systems into your daily operations and monitor them for continuous optimization.</p></div>
+ </div>
+</div></section>
 
-  <section id="how" class="sc-section" data-sc-act="flow">
-    <div class="sc-wrap">
-      <div class="head" data-sc-in><p class="eyebrow">How it works</p><h2 class="sc-display sc-display--lg">From repeat work to running workflow.</h2></div>
-      <div class="steps" data-sc-in data-sc-stagger="90">
-        <div class="step"><i class="ic">01</i><b>We map the repeat work</b><p>A short call to list what your team does by hand, and what it costs you each week.</p></div>
-        <div class="step"><i class="ic">02</i><b>We build and test it</b><p>Workflows in n8n, with Claude wherever a decision or a piece of writing is needed.</p></div>
-        <div class="step"><i class="ic">03</i><b>You get it, documented</b><p>The finished workflow, a plain guide to how it works, and support when you need it.</p></div>
-      </div>
-
-      <div class="close" data-sc-in>
-        <h2 class="sc-display sc-display--lg">Tell us the task you repeat most.</h2>
-        <p class="sc-body">On a short call we will say plainly whether it can be automated and what it would take.</p>
-        <a class="cta" href="mailto:kenil@syncloopai.com?subject=Book%20a%20call">Book a call</a>
-      </div>
-      <footer class="foot"><span>© Syncloop AI</span><a href="mailto:kenil@syncloopai.com">kenil@syncloopai.com</a></footer>
-    </div>
-  </section>
-
+<section id="contact"><div class="container"><div class="cta-container reveal">
+ <h2>Ready to Put Your Business on <span class="gradient-text">Autopilot?</span></h2>
+ <p>Tell us the task you repeat most. On a short call we will say plainly whether it can be automated.</p>
+ <a href="mailto:kenil@syncloopai.com?subject=Book%20a%20call" class="btn-primary">Book Your Free AI Audit</a>
+</div></div></section>
 </main>
+<footer><div class="container"><p>&copy; 2026 SyncLoop AI. All rights reserved. | syncloopai.com</p></div></footer>
 
 <script src="scrollcraft.js"></script>
-<script>ScrollCraft.mount(document);</script>
+<script>
+ScrollCraft.mount(document);
+(function(){'use strict';
+ var r=document.querySelectorAll('.reveal');
+ if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('active');o.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});r.forEach(function(el){o.observe(el)})}else{r.forEach(function(el){el.classList.add('active')})}
+ var hv=document.getElementById('heroVisual');
+ if(innerWidth>968&&hv){var t=false,mx=0,my=0,vis=true;new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(document.querySelector('.hero'));
+  addEventListener('mousemove',function(e){if(!vis)return;mx=e.clientX;my=e.clientY;if(!t){t=true;requestAnimationFrame(function(){hv.style.transform='rotateY('+((innerWidth/2-mx)/25)+'deg) rotateX('+(-(innerHeight/2-my)/25)+'deg) translateZ(0)';t=false})}})}
+ // chapter dots: one per section, highlights where you are
+ var ids=['services','story','features','examples','process','contact'],box=document.getElementById('dots'),links={};
+ ids.forEach(function(id){var a=document.createElement('a');a.href='#'+id;a.setAttribute('aria-label',id);box.appendChild(a);links[id]=a});
+ function upd(){var y=innerHeight*.45,cur=null;ids.forEach(function(id){var b=document.getElementById(id).getBoundingClientRect();if(b.top<y&&b.bottom>y)cur=id});for(var k in links)links[k].classList.toggle('on',k===cur)}
+ addEventListener('scroll',upd,{passive:true});upd();
+})();
+</script>
 </body>
 </html>
