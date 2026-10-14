@@ -3,14 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="SyncLoop AI builds custom AI automation systems that eliminate repetitive tasks, streamline workflows, and scale your business on autopilot.">
-<title>SyncLoop AI | Automate the Grind. Amplify Your Growth.</title>
+<meta name="description" content="SyncLoop AI builds custom automations that answer calls, follow up with leads and write your reports, so you can get your day back.">
+<title>SyncLoop AI | Friendly AI automation for busy teams</title>
+<link rel="canonical" href="https://syncloopai.com/">
+<meta name="theme-color" content="#E8EAF2">
+<meta property="og:type" content="website"><meta property="og:url" content="https://syncloopai.com/">
+<meta property="og:title" content="SyncLoop AI | Get your day back"><meta property="og:description" content="Custom automations that answer calls, follow up with leads and write your reports, built with n8n and Claude.">
+<meta property="og:image" content="https://syncloopai.com/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop stop-color='%234F46E5'/><stop offset='1' stop-color='%239333EA'/></linearGradient></defs><rect width='32' height='32' rx='9' fill='url(%23g)'/><path d='M9 11h8a3.5 3.5 0 010 7h-4m0 0h6a3.5 3.5 0 010 7H9' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round'/></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"SyncLoop AI","url":"https://syncloopai.com","email":"kenil@syncloopai.com","description":"Custom AI automation: voice receptionists, lead follow-up and automated reporting built with n8n and Claude."}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="scrollcraft.css">
 <style>
-:root{--bg-color:#E8EAF2;--card-bg:#F1F3F9;--text-primary:#1a1a1a;--text-secondary:#4a4a55;--accent-blue:#4F46E5;--accent-purple:#9333EA;--accent-pink:#EC4899;--glass-border:rgba(255,255,255,.7);
+:root{--bg-color:#E8EAF2;--card-bg:#F1F3F9;--text-primary:#1a1a1a;--text-secondary:#3d3d4b;--accent-blue:#4F46E5;--accent-purple:#9333EA;--accent-pink:#EC4899;--glass-border:rgba(255,255,255,.7);
 --clay-shadow-sm:8px 8px 16px rgba(20,20,35,.08),-8px -8px 16px rgba(255,255,255,.5);--clay-shadow-lg:25px 25px 50px rgba(20,20,35,.1),-25px -25px 50px rgba(255,255,255,.4);
 --sc-canvas:#E8EAF2;--sc-ink:#1a1a1a;--sc-accent:#4F46E5;--sc-font-text:'Plus Jakarta Sans',sans-serif;--sc-font-display:'Plus Jakarta Sans',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -20,8 +27,8 @@ background-image:radial-gradient(at 10% 10%,rgba(79,70,229,.08) 0,transparent 50
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent-blue);outline-offset:4px;border-radius:8px}
 [data-sc-progress]{background:linear-gradient(90deg,var(--accent-blue),var(--accent-purple),var(--accent-pink))!important}
 .bg-shape{position:fixed;z-index:-1;border-radius:30%;filter:blur(80px);opacity:.3;pointer-events:none}
-.shape-1{width:300px;height:300px;background:#C7D2FE;top:20%;left:-100px;animation:floatBg 15s ease-in-out infinite}
-.shape-2{width:400px;height:400px;background:#FBCFE8;bottom:10%;right:-150px;animation:floatBg 18s ease-in-out infinite reverse}
+.shape-1{width:300px;height:300px;background:#C7D2FE;top:20%;left:-100px;animation:floatBg 28s ease-in-out infinite}
+.shape-2{width:400px;height:400px;background:#FBCFE8;bottom:10%;right:-150px;animation:floatBg 34s ease-in-out infinite reverse}
 @keyframes floatBg{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,30px) scale(1.1)}}
 nav{position:fixed;top:20px;width:calc(100% - 40px);max-width:1180px;left:50%;transform:translateX(-50%);padding:16px 32px;background:rgba(241,243,249,.75);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:100px;z-index:1000;box-shadow:0 15px 35px rgba(20,20,35,.05);display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:1.4rem;font-weight:800;text-decoration:none;color:var(--text-primary);display:flex;align-items:center;gap:8px}
@@ -52,7 +59,7 @@ nav{position:fixed;top:20px;width:calc(100% - 40px);max-width:1180px;left:50%;tr
 @keyframes pulseStep{0%,8%,40%,100%{box-shadow:4px 4px 10px rgba(20,20,35,.04)}15%,30%{box-shadow:0 0 0 3px rgba(79,70,229,.25),4px 4px 10px rgba(20,20,35,.04)}}
 .automation-step .lt{width:40px;height:40px;border-radius:12px;box-shadow:inset 2px 2px 4px rgba(0,0,0,.05)}
 .step-text h4{font-size:.95rem}.step-text p{font-size:.8rem;color:var(--text-secondary);margin:0}
-.orb{position:absolute;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;box-shadow:10px 10px 30px rgba(20,20,35,.1),inset 2px 2px 5px rgba(255,255,255,.8);animation:float 6s ease-in-out infinite}
+.orb{position:absolute;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;box-shadow:10px 10px 30px rgba(20,20,35,.1),inset 2px 2px 5px rgba(255,255,255,.8);animation:float 9s ease-in-out infinite}
 .orb-1{width:160px;height:160px;background:linear-gradient(135deg,#FF80B5,#EF4444);top:-20px;right:40px;transform:translateZ(100px)}
 .orb-2{width:120px;height:120px;background:linear-gradient(135deg,#4F46E5,#06B6D4);bottom:30px;left:-20px;transform:translateZ(80px);animation-delay:2s}
 .orb-3{width:90px;height:90px;background:linear-gradient(135deg,#FBBF24,#F97316);bottom:-10px;right:80px;transform:translateZ(120px);animation-delay:4s}
@@ -134,11 +141,56 @@ footer{padding:40px 0;text-align:center;color:var(--text-secondary);font-size:.9
 .dots{position:fixed;right:18px;top:50%;translate:0 -50%;z-index:900;display:flex;flex-direction:column;gap:14px}
 .dots a{width:10px;height:10px;border-radius:50%;background:rgba(20,20,35,.18);box-shadow:inset 1px 1px 2px rgba(0,0,0,.1);transition:transform .3s,background .3s}
 .dots a.on{background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));transform:scale(1.5)}
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}.reveal.active{opacity:1;transform:translateY(0)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}.reveal.active{opacity:1;transform:translateY(0)}
 .process-card.reveal{transform:translateY(40px) rotateY(-5deg) rotateX(2deg)}.process-card.reveal.active{transform:translateY(0) rotateY(-5deg) rotateX(2deg)}.process-card.reveal.active:hover{transform:rotateY(0) rotateX(0) translateY(-10px)}
 @media(max-width:968px){.hero{flex-direction:column;text-align:center;padding-top:140px}.hero-content{max-width:100%;margin-bottom:60px}.cta-group{justify-content:center}.hero-visual{transform:scale(.8)!important;margin-bottom:40px;pointer-events:none}.hero h1{font-size:3rem}.bento-grid{grid-template-columns:repeat(2,1fr)}.bento-large,.bento-wide{grid-column:span 2}.story{grid-template-columns:1fr;gap:1rem;padding-top:84px}.caps{height:150px}.cap h3{font-size:1.25rem}.cap p{font-size:.95rem}.dots{display:none}}
 @media(max-width:640px){nav{padding:10px 14px 10px 16px;top:12px;width:calc(100% - 24px)}.logo{font-size:1.15rem}.logo-icon{width:30px;height:30px}.btn-nav{padding:10px 16px;font-size:.82rem}.story{padding-top:78px;gap:.6rem}.story .section-tag,.cap p{display:none}.story h2{font-size:1.45rem;margin-bottom:12px}.cap h3{font-size:1.1rem}.caps{height:66px}.story{align-items:start}.sn .lt{width:36px;height:36px;border-radius:11px}.booked{margin-top:12px;padding:8px}.story-card .card-header{margin-bottom:12px!important}.bento-large{min-height:470px}.hub-container{inset:46% 0 0 0}.nav-links{display:none}.hero h1{font-size:2.5rem}.section-header h2{font-size:2rem}.cta-container h2{font-size:2rem}.cta-group{flex-direction:column}.bento-grid{grid-template-columns:1fr}.bento-large,.bento-wide{grid-column:span 1}.stats-bar{flex-direction:column;gap:30px}.hero-visual{display:none}.chart-3d-container{transform:scale(.7);margin:-20px 0}.story-card{padding:16px}.sn{padding:6px 10px}.sn span,.sn em{display:none}.sn+.sn{margin-top:13px}.sn+.sn::before{top:-14px;height:14px}.caps{height:170px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* v2: warmth, forms, new sections */
+html{scroll-padding-top:90px}
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:52px;text-align:center}
+.btn-nav{min-height:44px;display:inline-flex;align-items:center}
+.hero{position:relative}.hero p.soft{font-size:.92rem;margin:16px 0 0;color:var(--text-secondary)}
+.hint{position:absolute;left:50%;bottom:22px;translate:-50% 0;font-size:.85rem;font-weight:600;color:var(--text-secondary);text-decoration:none;animation:bobh 3s ease-in-out infinite}
+@keyframes bobh{50%{translate:-50% 6px}}
+.you-card q{display:block;quotes:none;font-size:1.3rem;font-weight:700;line-height:1.3;margin-bottom:14px}
+.you-card .fix{color:var(--accent-blue);font-weight:600}
+.for{text-align:center;margin-top:36px;color:var(--text-secondary);font-size:1.05rem}.for b{color:var(--text-primary)}
+.band{padding:40px 0 20px}.band .container{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;text-align:center}.band p{font-size:1.25rem;font-weight:700}
+.sn .lt{position:relative}
+.sn .lt::after{content:"";position:absolute;right:-5px;top:-5px;width:18px;height:18px;border-radius:50%;background:#16A34A url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.5 8.3l2.2 2.2 4.8-4.8' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/14px no-repeat;box-shadow:0 2px 6px rgba(22,163,74,.4);scale:clamp(0,calc((var(--k) - .75)*4),1)}
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.demo h2{font-size:clamp(1.9rem,1rem + 2.4vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:16px}
+.lead{color:var(--text-secondary);font-size:1.1rem}
+.ticks{list-style:none;margin-top:20px;display:grid;gap:10px}.ticks li{display:flex;gap:10px;color:var(--text-primary)}
+.ticks li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:#DCFCE7 url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.5 8.3l2.2 2.2 4.8-4.8' fill='none' stroke='%2316A34A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/14px no-repeat}
+.call{background:rgba(241,243,249,.6);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:30px;box-shadow:var(--clay-shadow-lg);padding:24px;display:grid;gap:12px}
+.bub{max-width:86%;padding:12px 16px;border-radius:18px;font-size:.95rem;box-shadow:4px 4px 10px rgba(20,20,35,.06);opacity:0;translate:0 14px;transition:opacity .5s ease var(--d),translate .5s ease var(--d)}
+.bub small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+.bub.ai{background:#fff;justify-self:start;border-bottom-left-radius:6px}
+.bub.me{background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));color:#fff;justify-self:end;border-bottom-right-radius:6px}
+.call.active .bub{opacity:1;translate:0 0}
+.call .note{font-size:.78rem;color:var(--text-secondary);text-align:center;margin-top:4px}
+.promise{text-align:center;margin-top:44px;font-size:1.15rem;font-weight:700;color:var(--accent-purple)}
+.about{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,5vw,4rem);align-items:center;background:var(--card-bg);padding:clamp(1.5rem,4vw,3rem);border-radius:30px;box-shadow:var(--clay-shadow-lg);max-width:900px}
+.avatar-lg{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#C7D2FE,#FBCFE8);display:grid;place-items:center;font-size:3.6rem;font-weight:800;color:var(--accent-blue);box-shadow:var(--clay-shadow-sm),inset 2px 2px 6px rgba(255,255,255,.9);overflow:hidden}.avatar-lg img{width:100%;height:100%;object-fit:cover}
+.about h2{font-size:2.2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}.about p{color:var(--text-secondary);margin-bottom:10px}
+.faqs{max-width:820px}
+details{background:var(--card-bg);border-radius:20px;box-shadow:var(--clay-shadow-sm);margin-bottom:16px;border:1px solid var(--glass-border)}
+summary{cursor:pointer;list-style:none;padding:20px 24px;font-weight:700;display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:56px}
+summary::-webkit-details-marker{display:none}summary::after{content:"+";font-size:1.5rem;color:var(--accent-purple);transition:rotate .3s}details[open] summary::after{rotate:45deg}
+details p{padding:0 24px 22px;color:var(--text-secondary)}
+.cf{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:640px;margin:0 auto;text-align:left}
+.cf label{font-size:.85rem;font-weight:700;display:grid;gap:6px}.cf .full{grid-column:1/-1}
+.cf input,.cf textarea{font:inherit;font-weight:500;padding:14px 16px;min-height:48px;border-radius:14px;border:1px solid rgba(20,20,35,.08);background:#F6F7FB;box-shadow:inset 3px 3px 8px rgba(20,20,35,.07),inset -3px -3px 8px rgba(255,255,255,.8);color:var(--text-primary)}
+.cf input:focus-visible,.cf textarea:focus-visible{outline:2px solid var(--accent-blue);outline-offset:2px}
+.cf .thanks{grid-column:1/-1;text-align:center;font-size:1rem;margin:0;color:#15803D;background:#DCFCE7;border-radius:16px;padding:14px}
+.cta-container p.thanks{margin-bottom:0}
+.alts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}.alts [hidden]{display:none}
+footer a{color:inherit}
+@media(max-width:968px){.demo,.about{grid-template-columns:1fr}.about{text-align:center;justify-items:center}.hint{display:none}.cta-group{align-items:stretch}.band .container{flex-direction:column;gap:14px}}
+@media(max-width:640px){.cf{grid-template-columns:1fr}.about h2{font-size:1.8rem}.you-card q{font-size:1.15rem}}
 </style>
 </head>
 <body>
@@ -146,18 +198,18 @@ footer{padding:40px 0;text-align:center;color:var(--text-secondary);font-size:.9
 <div class="bg-shape shape-1" aria-hidden="true"></div><div class="bg-shape shape-2" aria-hidden="true"></div>
 <nav>
  <a href="#" class="logo"><div class="logo-icon" aria-hidden="true">⏣</div>SyncLoop<span style="color:var(--accent-blue)">AI</span></a>
- <div class="nav-links"><a href="#services">Services</a><a href="#story">Live demo</a><a href="#examples">Examples</a><a href="#process">Process</a></div>
- <a href="#contact" class="btn-nav">Book a Call</a>
+ <div class="nav-links"><a href="#services">Services</a><a href="#story">See it run</a><a href="#examples">Examples</a><a href="#about">About</a><a href="#faq">FAQ</a></div>
+ <a href="#contact" class="btn-nav" data-book>Book a Call</a>
 </nav>
 <div class="dots" id="dots" aria-hidden="true"></div>
 
 <main>
 <header class="hero container">
  <div class="hero-content">
-  <div class="hero-badge"><span style="width:8px;height:8px;background:var(--accent-purple);display:inline-block;border-radius:50px"></span>Next-Gen AI Automations</div>
-  <h1>Automate the Grind. <br><span class="gradient-text">Amplify Your Growth.</span></h1>
-  <p>SyncLoop AI builds custom AI automation systems that eliminate repetitive tasks, streamline your workflows, and scale your business on autopilot.</p>
-  <div class="cta-group"><a href="#contact" class="btn-primary">Book a Free Strategy Call</a><a href="#story" class="btn-secondary">See How It Works</a></div>
+  <div class="hero-badge"><span style="width:8px;height:8px;background:var(--accent-purple);display:inline-block;border-radius:50px"></span>Friendly automation for busy teams</div>
+  <h1>Stop repeating yourself. <br><span class="gradient-text">Let automation do it.</span></h1>
+  <p>Tired of missed calls, slow follow-ups and Monday report marathons? We build custom automations that handle them for you, so you can get back to the work you enjoy.</p>
+  <div class="cta-group"><a href="#contact" class="btn-primary">Let’s chat about your busiest task</a><a href="#story" class="btn-secondary">See it in action</a></div><p class="soft">Free 20-minute call. No pitch, no pressure.</p>
  </div>
  <div class="hero-visual" id="heroVisual" aria-hidden="true">
   <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
@@ -171,6 +223,7 @@ footer{padding:40px 0;text-align:center;color:var(--text-secondary);font-size:.9
    <div style="height:8px;background:#E2E8F0;border-radius:10px;overflow:hidden"><div style="width:80%;height:100%;background:linear-gradient(90deg,var(--accent-blue),var(--accent-purple));border-radius:10px"></div></div>
   </div>
  </div>
+ <a class="hint" href="#you" aria-label="Scroll down">Scroll to see how ↓</a>
 </header>
 
 <section style="padding-top:0"><div class="container reveal"><div class="stats-bar">
@@ -179,6 +232,16 @@ footer{padding:40px 0;text-align:center;color:var(--text-secondary);font-size:.9
  <div class="stat-item"><div class="stat-num"><span data-sc-count="0 400">400</span>+</div><div class="stat-label">Apps n8n can connect to</div></div>
  <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Manual steps left in a finished flow</div></div>
 </div></div></section>
+
+<section id="you"><div class="container">
+ <div class="section-header reveal"><span class="section-tag">Sound familiar?</span><h2>Is this <span class="gradient-text">you?</span></h2><p>If any of these made you nod, we can take it off your plate.</p></div>
+ <div class="services-grid">
+  <div class="service-card reveal you-card"><q>I miss calls when I’m busy.</q><p class="fix">An AI receptionist answers and books for you, day and night.</p></div>
+  <div class="service-card reveal you-card"><q>I forget to follow up with leads.</q><p class="fix">Every enquiry gets a personal reply within minutes, automatically.</p></div>
+  <div class="service-card reveal you-card"><q>Monday reports eat my morning.</q><p class="fix">Your report writes itself and lands in your inbox.</p></div>
+ </div>
+ <p class="for reveal">Built for <b>clinics</b>, <b>agencies</b>, <b>local service businesses</b> and <b>marketing teams</b>.</p>
+</div></section>
 
 <section id="services"><div class="container">
  <div class="section-header reveal"><span class="section-tag">Core Services</span><h2>Enter the Loop. <span class="gradient-text">Enter SyncLoop AI.</span></h2><p>We don’t just give you a ChatGPT prompt. We build end-to-end AI automation systems integrated directly into your tools.</p></div>
@@ -189,7 +252,7 @@ footer{padding:40px 0;text-align:center;color:var(--text-secondary);font-size:.9
  </div>
 </div></section>
 
-<section id="story" data-sc-act="pin" data-sc-span="4">
+<section id="story" data-sc-act="pin" data-sc-span="2.4">
  <div data-sc-stage class="story">
   <div>
    <span class="section-tag">Watch it run</span>
@@ -208,10 +271,31 @@ footer{padding:40px 0;text-align:center;color:var(--text-secondary);font-size:.9
    <div class="sn" style="--s:.50"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="hubspot" role="img"><path fill="#FF7A59" d="M18.164 7.93V5.084a2.2 2.2 0 0 0 1.267-1.978v-.067A2.2 2.2 0 0 0 17.238.845h-.067a2.2 2.2 0 0 0-2.193 2.193v.067a2.2 2.2 0 0 0 1.252 1.973l.013.006v2.852a6.2 6.2 0 0 0-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 1 0 4.3 4.656l-.012.006 7.697 5.991a6.18 6.18 0 0 0-1.038 3.446 6.2 6.2 0 0 0 1.147 3.607l-.013-.02-2.342 2.343a2 2 0 0 0-.58-.095h-.002a2.033 2.033 0 1 0 2.033 2.033 2 2 0 0 0-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 1 0 4.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 1 1 3.215-3.207v.002a3.206 3.206 0 0 1-3.207 3.207z"/></svg></div><div><b>Contact and deal created</b><span>Owner assigned</span></div><em>CRM</em></div>
    <div class="sn" style="--s:.64"><div class="lt"><svg class="lg" viewBox="0 0 24 24" aria-label="gmail" role="img"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg></div><div><b>Personal reply sent</b><span>With a link to book a call</span></div><em>Email</em></div>
    <div class="sn" style="--s:.78"><div class="lt"><svg class="lg" viewBox="0 0 448 512" aria-label="slack" role="img"><path fill="#4A154B" d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"/></svg></div><div><b>Team notified</b><span>Hot leads pinged instantly</span></div><em>Slack</em></div>
-   <div class="booked">✓ Handled. Zero manual steps.</div>
+   <div class="booked">✓ Done. You just got your afternoon back.</div>
   </div>
  </div>
 </section>
+
+<section class="band"><div class="container reveal"><p>Want this running in your business?</p><a href="#contact" class="btn-primary">Let’s chat about your busiest task</a></div></section>
+
+<section id="demo"><div class="container demo">
+ <div class="reveal">
+  <span class="section-tag">Hear how it sounds</span>
+  <h2>Every call answered, like a friendly receptionist would.</h2>
+  <p class="lead">Your AI receptionist picks up, talks naturally, checks your calendar and books the appointment. You get a short summary, not a voicemail.</p>
+  <ul class="ticks"><li>No missed calls, nights or weekends included</li><li>Bookings land straight in your calendar</li><li>You stay in control and can step in any time</li></ul>
+  <div class="cta-group" style="margin-top:28px"><a class="btn-primary" href="mailto:kenil@syncloopai.com?subject=I%27d%20like%20a%20live%20demo" data-demo>Ask for a live demo</a></div>
+ </div>
+ <div class="call reveal" aria-label="Sample call between an AI receptionist and a caller">
+  <div class="card-header" style="margin-bottom:16px"><span class="card-title">Sample call · dental clinic</span><span class="card-status">● Live</span></div>
+  <div class="bub ai" style="--d:.2s"><small>AI receptionist</small>Hello, thanks for calling Sarah’s Dental Clinic. How can I help?</div>
+  <div class="bub me" style="--d:.9s"><small>Caller</small>Hi, I’d like to book a cleaning this week.</div>
+  <div class="bub ai" style="--d:1.6s"><small>AI receptionist</small>Of course. I have Thursday at 10:30 or Friday at 2:00. Which suits you?</div>
+  <div class="bub me" style="--d:2.3s"><small>Caller</small>Thursday works.</div>
+  <div class="bub ai" style="--d:3s"><small>AI receptionist</small>Booked! You’ll get a confirmation text in a moment.</div>
+  <p class="note">An illustrative example of the kind of conversation it handles.</p>
+ </div>
+</div></section>
 
 <section id="features"><div class="container">
  <div class="section-header reveal"><span class="section-tag">What you get</span><h2>Built for Scale, <span class="gradient-text">Designed for Humans.</span></h2><p>Everything you need to run repetitive work on autopilot, wrapped around the tools you already use.</p></div>
@@ -242,21 +326,50 @@ footer{padding:40px 0;text-align:center;color:var(--text-secondary);font-size:.9
 </div></section>
 
 <section id="process"><div class="container">
- <div class="section-header reveal"><span class="section-tag">How It Works</span><h2>The SyncLoop Process</h2><p>Getting started is simple. We handle the heavy lifting while you watch your business run itself.</p></div>
+ <div class="section-header reveal"><span class="section-tag">What happens next</span><h2>After You Say <span class="gradient-text">Hello.</span></h2><p>No pressure and no jargon. Here is exactly how it goes.</p></div>
  <div class="process-grid">
-  <div class="process-card reveal"><div class="step-number" aria-hidden="true">1</div><h3>Discover</h3><p>We audit your current workflows to find the biggest bottlenecks costing you time and money.</p></div>
-  <div class="process-card reveal"><div class="step-number" aria-hidden="true">2</div><h3>Build</h3><p>We custom-design and train AI agents and automations tailored specifically for your business logic.</p></div>
-  <div class="process-card reveal"><div class="step-number" aria-hidden="true">3</div><h3>Sync</h3><p>We integrate the systems into your daily operations and monitor them for continuous optimization.</p></div>
+  <div class="process-card reveal"><div class="step-number" aria-hidden="true">1</div><h3>We chat</h3><p>A free 20-minute call. You tell us the task you repeat most, and we listen.</p></div>
+  <div class="process-card reveal"><div class="step-number" aria-hidden="true">2</div><h3>We suggest a plan</h3><p>You get a clear plan, a timeline and a fixed price agreed before we start.</p></div>
+  <div class="process-card reveal"><div class="step-number" aria-hidden="true">3</div><h3>You decide</h3><p>If you’re in, we build, test and hand it over, with a simple guide. If not, no hard feelings.</p></div>
+ </div>
+ <p class="promise reveal">Our promise: if we can’t automate it, we’ll tell you plainly.</p>
+</div></section>
+
+<section id="about"><div class="container about reveal">
+ <div class="avatar-lg" aria-hidden="true"><!-- To use a photo: replace the K with <img src="kenil.jpg" alt="Kenil"> -->K</div>
+ <div>
+  <span class="section-tag">Who’s behind this</span>
+  <h2>Hi, I’m Kenil.</h2>
+  <p>I’m a marketer who builds the automation. I know how much time disappears into follow-ups, reports and missed calls, so I build the systems that take that work off your plate.</p>
+  <p>You’ll talk to me directly, in plain English, from the first chat to the day it goes live. I reply to every message personally, usually within a day.</p>
  </div>
 </div></section>
 
+<section id="faq"><div class="container faqs">
+ <div class="section-header reveal"><span class="section-tag">Questions</span><h2>Things People <span class="gradient-text">Often Ask</span></h2></div>
+ <details class="reveal"><summary>Do I need any technical skills?</summary><p>No. We handle the building and setup, and explain everything in plain English.</p></details>
+ <details class="reveal"><summary>What does it cost?</summary><p>It depends on what you need. After a free chat you get a fixed price in writing before anything starts, so there are no surprise bills.</p></details>
+ <details class="reveal"><summary>How long does it take?</summary><p>Simple automations can be live within a week or two. Bigger systems take longer, and we’ll give you a clear timeline after our first chat.</p></details>
+ <details class="reveal"><summary>What if something breaks?</summary><p>Every workflow is tested before handover, and you can add ongoing support so someone keeps an eye on it for you.</p></details>
+ <details class="reveal"><summary>Is my data safe?</summary><p>Workflows run in accounts you control, we only connect the tools you approve, and you can remove access at any time. We’ll explain exactly what is connected.</p></details>
+ <details class="reveal"><summary>Which tools does it work with?</summary><p>Gmail, Slack, HubSpot, Notion, Google Sheets, calendars, WhatsApp and hundreds more through n8n.</p></details>
+</div></section>
+
+
 <section id="contact"><div class="container"><div class="cta-container reveal">
- <h2>Ready to Put Your Business on <span class="gradient-text">Autopilot?</span></h2>
- <p>Tell us the task you repeat most. On a short call we will say plainly whether it can be automated.</p>
- <a href="mailto:kenil@syncloopai.com?subject=Book%20a%20call" class="btn-primary">Book Your Free AI Audit</a>
+ <h2>Ready to Get Your Day <span class="gradient-text">Back?</span></h2>
+ <p>Tell us the task you repeat most. On a short call we’ll say plainly whether it can be automated.</p>
+ <form id="cf" class="cf" novalidate>
+  <label>Your name<input name="name" autocomplete="name" required></label>
+  <label>Your email<input name="email" type="email" autocomplete="email" required></label>
+  <label class="full">What task do you repeat most?<textarea name="task" rows="3" placeholder="For example: answering the same calls, chasing leads, building weekly reports"></textarea></label>
+  <button class="btn-primary full" type="submit">Send my message</button>
+  <p id="thanks" class="thanks" role="status" aria-live="polite" hidden>Thank you! Your email app should open with your message ready to send. I’ll reply personally, usually within a day.</p>
+ </form>
+ <div class="alts"><a class="btn-secondary" href="#contact" data-book>Book a call</a><a class="btn-secondary" href="https://wa.me/" data-wa hidden>Message on WhatsApp</a><a class="btn-secondary" href="mailto:kenil@syncloopai.com">Email us</a></div>
 </div></div></section>
 </main>
-<footer><div class="container"><p>&copy; 2026 SyncLoop AI. All rights reserved. | syncloopai.com</p></div></footer>
+<footer><div class="container"><p>&copy; 2026 SyncLoop AI · <a href="mailto:kenil@syncloopai.com">kenil@syncloopai.com</a> · syncloopai.com</p><p style="font-size:.8rem;margin-top:6px">We only use your details to reply to you, and we never share them.</p></div></footer>
 
 <script src="scrollcraft.js"></script>
 <script>
@@ -268,10 +381,25 @@ ScrollCraft.mount(document);
  if(innerWidth>968&&hv){var t=false,mx=0,my=0,vis=true;new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(document.querySelector('.hero'));
   addEventListener('mousemove',function(e){if(!vis)return;mx=e.clientX;my=e.clientY;if(!t){t=true;requestAnimationFrame(function(){hv.style.transform='rotateY('+((innerWidth/2-mx)/25)+'deg) rotateX('+(-(innerHeight/2-my)/25)+'deg) translateZ(0)';t=false})}})}
  // chapter dots: one per section, highlights where you are
- var ids=['services','story','features','examples','process','contact'],box=document.getElementById('dots'),links={};
+ var ids=['services','story','demo','features','examples','process','about','faq','contact'],box=document.getElementById('dots'),links={};
  ids.forEach(function(id){var a=document.createElement('a');a.href='#'+id;a.setAttribute('aria-label',id);box.appendChild(a);links[id]=a});
  function upd(){var y=innerHeight*.45,cur=null;ids.forEach(function(id){var b=document.getElementById(id).getBoundingClientRect();if(b.top<y&&b.bottom>y)cur=id});for(var k in links)links[k].classList.toggle('on',k===cur)}
  addEventListener('scroll',upd,{passive:true});upd();
+ // ---- One place to edit: add your details here and the page updates itself ----
+ var CFG={booking:'',whatsapp:'',demoPhone:'',email:'kenil@syncloopai.com'};
+ // booking: your Calendly / Cal.com link, e.g. 'https://cal.com/yourname/20min'
+ // whatsapp: digits only with country code, e.g. '919876543210'   demoPhone: e.g. '+1 555 123 4567'
+ document.querySelectorAll('[data-book]').forEach(function(a){if(CFG.booking){a.href=CFG.booking;a.target='_blank';a.rel='noopener'}});
+ document.querySelectorAll('[data-wa]').forEach(function(a){if(CFG.whatsapp){a.href='https://wa.me/'+CFG.whatsapp+'?text='+encodeURIComponent('Hi Kenil, I would like to talk about automating a task.');a.hidden=false}});
+ document.querySelectorAll('[data-demo]').forEach(function(a){if(CFG.demoPhone){a.href='tel:'+CFG.demoPhone.replace(/\s/g,'');a.textContent='Call the demo line: '+CFG.demoPhone}});
+ var cf=document.getElementById('cf');
+ if(cf)cf.addEventListener('submit',function(e){e.preventDefault();var f=cf.elements,ok=true;
+  [f.name,f.email].forEach(function(x){if(!x.value.trim()||(x.type==='email'&&x.value.indexOf('@')<1)){x.setAttribute('aria-invalid','true');ok=false}else x.removeAttribute('aria-invalid')});
+  if(!ok){(cf.querySelector('[aria-invalid]')||f.name).focus();return}
+  var body='Name: '+f.name.value+'\nEmail: '+f.email.value+'\n\nTask I repeat most:\n'+(f.task.value||'(not filled in)');
+  document.getElementById('thanks').hidden=false;
+  location.href='mailto:'+CFG.email+'?subject='+encodeURIComponent('New enquiry from '+f.name.value)+'&body='+encodeURIComponent(body)});
+
 })();
 </script>
 </body>
